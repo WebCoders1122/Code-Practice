@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+    color: blueviolet;
+}
+img {
+    border-radius: 40px;
+    align-items: center;
+}
+.form {
+    font-family: 'Courier New', Courier, monospace;
+}
