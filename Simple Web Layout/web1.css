@@ -47,11 +47,6 @@ main {
     padding: 10px;
     margin: 0 0 0 16px;
 }
-section::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
 
   footer {
     background-color: blueviolet;
@@ -59,4 +54,5 @@ section::after {
     text-align: center;
     color: white;
     margin-top: 16px;
+    clear: left;
   }
