@@ -5,13 +5,15 @@
         <link rel="stylesheet" href="Survey form.css">
     </head>
     <body>
+        <div class="container">
         <header>
             <h1>Survey Form:</h1>
+            <hr>
         </header>
     <main>
         <div>
             <h2>Customer Name:</h2>
-            <input type="text" id="first-name" class="text-inputSmall">
+            <input type="text" id="first-name" class="text-inputSmall" required>
             <label for="first-name">Enter your First Name</label>
             <input type="text" id="second-name" class="text-inputSmall">
             <label for="second-name">Enter Your last name</label>
@@ -19,10 +21,10 @@
         <!--Address strat-->
         <div>
             <h2>Address:</h2>
-            <input type="text" id="Address1" class="text-inputSmall">
+            <input type="text" id="address1" class="text-inputSmall address">
             <label for="Address1">Address line 1</label>
             <br>
-            <input type="text" id="Address2" class="text-inputSmall">
+            <input type="text" id="address2" class="text-inputSmall address">
             <label for="Address2">Address line 2</label>
             <br>
             <input type="text" id="City" class="text-inputSmall">
@@ -33,7 +35,20 @@
             <input type="number" id="post-code" class="text-inputSmall">
             <label for="post-code">Zip Code</label>
             <br>
-            <input type="text" id="country" class="text-inputSmall">
+            <select name="country" id="selectCountry">
+                <option value="Pakistan">Pakistan</option>
+                <option value="India">India</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United Arab Emarates">United Arab Emarates</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Soudi Arabia">Soudi Arabia</option>
+                <option value="China">China</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Iraq">Iraq</option>
+                <option value="Iran">Iran</option>
+            </select>
             <label for="country">Native Country</label>
         </div>
         <!--Contact start-->
@@ -54,7 +69,7 @@
             <input type="radio" id="other" name="gender"> <label for="other">Other</label>
         </div>
 <!--Rating start-->
-<div>
+<div class="ratings">
     <h2>Ratings:</h2>
     <div> <!--Rating1 start-->
     <h5>Rating 1:</h5>
@@ -101,6 +116,8 @@
 </div>
     <button>Submit</button>    
     </main>
-
+        </div>
     </body>
+
+
 </html>
