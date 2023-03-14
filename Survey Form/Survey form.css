@@ -1,84 +1,80 @@
+/* reset everything  */
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: lightgoldenrodyellow;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: black;
+    background-color: #000;
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .container {
-    border: solid 1px darkgoldenrod;
-    width: 60%;
-    margin: 20px auto;
-    padding: 25px;
+    width: 800px;
+    border: solid #fff 1px;
+    margin: 40px auto;
 }
 
-h1 {
-    font-size: 80px;
+.form-heading {
     text-align: center;
-    color:darkgoldenrod;
-    margin: 10px auto 10px 0;
+    margin: 30px;
 }
 
-h2 {
-    text-align: left;
+.form-heading-text {
+    margin-bottom: 25px;
+    font-size: 60px;
+}
+
+.form {
+    margin: 35px;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 35px;
+}
+
+.group-heading {
+    margin: 10px 0px 0px 0px;
+}
+.group-heading-text {
     font-size: 35px;
-    color: rgb(150, 108, 0);
-    margin: 5px 5px 5px 0;
 }
 
-.text-inputSmall {
-    border: solid 3px rgb(213, 154, 3);
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px 10px 10px 0;
-    display: inline-block;
-    font-size: medium;
-    font-family: 'Times New Roman', Times, serif;
-    color: darkblue;
-    width: 35%;
+.group-elements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 
-#selectCountry {
-    border: solid 3px rgb(213, 154, 3);
+.elements {
+    margin: 20px 0;
+}
+
+.text-field {
+    font-size: 25px;
+    border: #fff solid 1px;
     border-radius: 10px;
-    padding: 10px;
-    margin: 10px 0 10px 0;
-    font-size: large;
-    font-family: Arial, Helvetica, sans-serif;
-    color: darkgray;
+    padding: 5px;
     width: 100%;
 }
 
-.address {
-    width: 97%;
-}
-
-h5 {
-    display: inline;
-    font-size: larger;
-    margin: 5px 10px 5px 0;
-}
-
-.ratings {
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
+.help-text {
+    margin: 8px 0 0 5px;
+    font-size: 15px;
 }
 
 button {
-    border: 3px solid darkgoldenrod;
-    border-radius: 5px;
-    padding: 10px 20px;
-    background-color: darkgoldenrod;
-    color: white;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #0e46e2;
+    font-size: 35px;
+    padding: 8px 15px;
     margin: 20px auto 0 auto;
     display: block;
-    font-size: larger;
-    font-weight: bold;
 }
-
-button:hover {
-    background-color: #727272;
-}
-
-
-

@@ -1,123 +1,263 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Survey Form</title>
-        <link rel="stylesheet" href="Survey form.css">
-    </head>
-    <body>
-        <div class="container">
-        <header>
-            <h1>Survey Form:</h1>
-            <hr>
-        </header>
-    <main>
-        <div>
-            <h2>Customer Name:</h2>
-            <input type="text" id="first-name" class="text-inputSmall" required>
-            <label for="first-name">Enter your First Name</label>
-            <input type="text" id="second-name" class="text-inputSmall">
-            <label for="second-name">Enter Your last name</label>
-        </div>
-        <!--Address strat-->
-        <div>
-            <h2>Address:</h2>
-            <input type="text" id="address1" class="text-inputSmall address">
-            <label for="Address1">Address line 1</label>
-            <br>
-            <input type="text" id="address2" class="text-inputSmall address">
-            <label for="Address2">Address line 2</label>
-            <br>
-            <input type="text" id="City" class="text-inputSmall">
-            <label for="City">City</label>
-            <input type="text" id="state" class="text-inputSmall">
-            <label for="state">State</label>
-            <br>
-            <input type="number" id="post-code" class="text-inputSmall">
-            <label for="post-code">Zip Code</label>
-            <br>
-            <select name="country" id="selectCountry">
-                <option value="Pakistan">Pakistan</option>
-                <option value="India">India</option>
-                <option value="Afghanistan">Afghanistan</option>
-                <option value="United States">United States</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="United Arab Emarates">United Arab Emarates</option>
-                <option value="Brazil">Brazil</option>
-                <option value="Soudi Arabia">Soudi Arabia</option>
-                <option value="China">China</option>
-                <option value="Turkey">Turkey</option>
-                <option value="Iraq">Iraq</option>
-                <option value="Iran">Iran</option>
-            </select>
-            <label for="country">Native Country</label>
-        </div>
-        <!--Contact start-->
-        <div>
-            <h2>Contact Details:</h2>
-            <input type="tel" id="phone" class="text-inputSmall">
-            <label for="phone">Phone Number</label>
-            <input type="email" id="mail" class="text-inputSmall">
-            <label for="mail">Email</label>
-        </div>
-        <!--Gender start-->
-        <div>
-            <h2>Select Your Gender:</h2>
-            <input type="radio" id="male" name="gender"> <label for="male">Male</label>
-            <br>
-            <input type="radio" id="female" name="gender"><label for="female">Female</label>
-            <br>
-            <input type="radio" id="other" name="gender"> <label for="other">Other</label>
-        </div>
-<!--Rating start-->
-<div class="ratings">
-    <h2>Ratings:</h2>
-    <div> <!--Rating1 start-->
-    <h5>Rating 1:</h5>
-    <input type="radio" id="not-good1" name="rating1"><label for="not-good1">Not Good</label>
-    <input type="radio" id="good1" name="rating1"><label for="good1">Good</label>
-    <input type="radio" id="Extraodinary1" name="rating1"><label for="Extraodinary1">Extraodinary</label>
-</div>
-    <div> <!--Rating2 start-->
-    <h5>Rating 2:</h5>
-    <input type="radio" id="not-good2" name="rating2"><label for="not-good2">Not Good</label>
-    <input type="radio" id="good2" name="rating2"><label for="not-good2">Good</label>
-    <input type="radio" id="Extraodinary2" name="rating2"><label for="Extraodinary2">Extraodinary</label>
-</div>
-    <div> <!--Rating3 start-->
-    <h5>Rating 3:</h5>
-    <input type="radio" id="not-good3" name="rating3"><label for="not-good3">Not Good</label>
-    <input type="radio" id="not-good3" name="rating3"><label for="not-good3">Good</label>
-    <input type="radio" id="Extraodinary3" name="rating3"><label for="Extraodinary3">Extraodinary</label>
-</div>
-    <div> <!--Rating4 start-->
-    <h5>Rating 4:</h5>
-    <input type="radio" id="not-good4" name="rating4"><label for="not-good4">Not Good</label>
-    <input type="radio" id="not-good4" name="rating4"><label for="not-good4">Good</label>
-    <input type="radio" id="Extraodinary4" name="rating4"><label for="Extraodinary4">Extraodinary</label>
-</div>
-    <div> <!--Rating5 start-->
-    <h5>Rating 5:</h5>
-    <input type="radio" id="not-good5" name="rating5"><label for="not-good5">Not Good</label>
-    <input type="radio" id="not-good5" name="rating5"><label for="not-good5">Good</label>
-    <input type="radio" id="Extraodinary5" name="rating5"><label for="Extraodinary5">Extraodinary</label>
-</div>
-    <div> <!--Rating6 start-->
-    <h5>Rating 6:</h5>
-    <input type="radio" id="not-good6" name="--Rating6"><label for="not-good6">Not Good</label>
-    <input type="radio" id="not-good6" name="--Rating6"><label for="not-good6">Good</label>
-    <input type="radio" id="Extraodinary6" name="rating6"><label for="Extraodinary6">Extraodinary</label>
-</div>
-    <div> <!--Rating7 start-->
-    <h5>Rating 7:</h5>
-    <input type="radio" id="not-good7" name="rating7"><label for="not-good7">Not Good</label>
-    <input type="radio" id="not-good7" name="rating7"><label for="good7">Good</label>
-    <input type="radio" id="Extraodinary7" name="rating7"><label for="Extraodinary7">Extraodinary</label>
-</div>
-</div>
-    <button>Submit</button>    
-    </main>
-        </div>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Survey form.css">
+</head>
+<body>
+    <div class="container">
 
+        <!-- form heading  -->
+        <div class="form-heading">
+            <h2 class="form-heading-text">Survey Form</h2>
+            <hr>
+        </div>
+
+        <!-- start form  -->
+        <form class="form">
+
+            <!-- name start  -->
+            <div class="group">
+
+                <div class="group-heading">
+                    <h3 class="group-heading-text">Customer Name</h3>
+                </div>
+
+                <div class="group-elements">
+
+                    <div class="element">
+                        <input type="text" class="text-field" name="first-name" id="name" required>
+                        <div class="help-text">
+                            Enter Your first name
+                        </div>
+                    </div>
+
+                    <div class="element">
+                        <input type="text" class="text-field" name="last-name" id="name" required>
+                        <div class="help-text">
+                            Enter Your Last name
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Name End  -->
+
+            <!-- address start -->
+            <div class="group">
+
+                <div class="group-heading">
+                    <h3 class="group-heading-text">Address</h3>
+                </div>
+
+                <div class="element">
+                    <input type="text" class="text-field" name="line1" id="name" required>
+                    <div class="help-text">
+                        Address Line 1
+                    </div>
+                </div>
+
+                <div>
+                    <div class="element">
+                        <input type="text" class="text-field" name="line2" id="name" required>
+                        <div class="help-text">
+                            Address Line 2
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group-elements">
+
+                    <div class="element">
+                        <input type="text" class="text-field" name="city" id="name" required>
+                        <div class="help-text">
+                            City
+                        </div>
+                    </div>
+
+                    <div class="element">
+                        <input type="text" class="text-field" name="state" id="name" required>
+                        <div class="help-text">
+                            State
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group-elements">
+
+                    <div class="element">
+                        <input type="number" class="text-field" name="zip" id="name" required>
+                        <div class="help-text">
+                            ZIP
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- address End -->
+
+            <!-- country start  -->
+            <div class="group">
+                    <div class="element">
+
+                        <select class="text-field" name="select-list">
+                            <option value="1">Pakistan</option>
+                            <option value="1">Iran</option>
+                            <option value="1">Indonesia</option>
+                            <option value="1">Saudi Arabia</option>
+                            <option value="1">Others</option>
+                        </select>
+
+                        <div class="help-text">
+                            Country
+                        </div>
+
+                    </div>
+                </div>
+                <!-- country end  -->
+
+                <!-- contact start  -->
+            <div class="group">
+
+                <div class="group-heading">
+                    <h3 class="group-heading-text">Contact</h3>
+                </div>
+
+                <div class="group-elements">
+
+                    <div class="element">
+                        <input type="tel" class="text-field" name="phone" id="name" required>
+                        <div class="help-text">
+                            Phone
+                        </div>
+                    </div>
+
+                    <div class="element">
+                        <input type="email" class="text-field" name="email" id="name" required>
+                        <div class="help-text">
+                            Email
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Contact End  -->
+
+            <!-- personal info start  -->
+            <div class="group">
+
+                <div class="radio">
+                    <h3 class="group-heading-text">Personal Details</h3>
+                </div>
+
+                <div class="radio">
+
+                    <div class="element">
+                        <input type="radio" name="male" id="male" value="male">
+                        <label for="male">Male</label>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="male" id="female" value="female">
+                        <label for="female">female</label>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="male" id="others" value="others">
+                        <label for="other">others</label>
+                    </div>
+
+                </div>
+            </div>
+            <!-- personal info End  -->
+
+             <!-- ratings start  -->
+             <div class="group">
+
+                <div class="radio">
+                    <h3 class="group-heading-text">Ratings</h3>
+                </div>
+
+                <div class="group-elements">
+
+                    <div class="rating-heading">
+                        <h4>Rating 1:</h4>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="r1" id="r1" value="best">
+                        <label for="male">Best</label>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="r1" id="r2" value="good">
+                        <label for="male">Good</label>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="r1" id="r3" value="bad">
+                        <label for="male">Bad</label>
+                    </div>
+
+                </div>
+
+                <div class="group-elements">
+
+                    <div class="rating-heading">
+                        <h4>Rating 2:</h4>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="r1" id="r1" value="best">
+                        <label for="male">Best</label>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="r1" id="r2" value="good">
+                        <label for="male">Good</label>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="r1" id="r3" value="bad">
+                        <label for="male">Bad</label>
+                    </div>
+
+                </div>
+
+                <div class="group-elements">
+
+                    <div class="rating-heading">
+                        <h4>Rating 3:</h4>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="r1" id="r1" value="best">
+                        <label for="male">Best</label>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="r1" id="r2" value="good">
+                        <label for="male">Good</label>
+                    </div>
+
+                    <div class="element">
+                        <input type="radio" name="r1" id="r3" value="bad">
+                        <label for="male">Bad</label>
+                    </div>
+
+                </div>
+            </div>
+            <!-- ratings End  -->
+
+            <button type="submit"> Submit </button>
+
+            </div>
+        </form>
+    </div>
+</body>
 
 </html>

@@ -1,0 +1,62 @@
+/* css without flexbox */
+
+body {
+    width: 1000px;
+    color: white;
+}
+header {
+    border: solid 0;
+    background-color: blueviolet;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 950px;
+    padding: 25px;
+}
+nav {
+    border: solid 0;
+    background-color: blueviolet;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 950px;
+    padding: 25px;
+}
+
+.sidebarleft {
+    border: solid 0;
+    background-color: blueviolet;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 240px;
+    height: 300px;
+    float: left;
+}
+main {
+    border: solid 0;
+    background-color: blueviolet;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 540px;
+    height: 300px;
+    float: left;
+}
+.sidebarright {
+    border: solid 0;
+    background-color: blueviolet;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 300px;
+    float: left;
+}
+
+footer {
+    border: solid 0;
+    background-color: blueviolet;
+    text-align: center;
+    width: 950pxpx;
+    clear: left;
+    padding: 25px;
+}
+
