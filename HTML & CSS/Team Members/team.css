@@ -1,0 +1,95 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    background-color: lightgray;
+}
+
+.row {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.col  {
+    width: 30%;
+    position: relative;
+}
+
+.col img {
+    width: 100%;
+    filter: grayscale(100%);
+    transition: filter 1s;
+}
+
+.col:hover img {
+    filter: grayscale(0%);
+}
+
+.info {
+    background-color: #101b1b;
+    color: white;
+    width: 95%;
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -50px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info h2 {
+    font-weight: normal;
+}
+
+.info p {
+    font-size: 13px;
+}
+
+.social {
+    margin: 0 auto 5px;
+    width: 80%;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.social .fa-brands {
+    max-height: 0px;
+    transition: max-height 0.5s;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.col:hover .fa-brands {
+    max-height: 30px;
+}
+
+.info .fa-facebook {
+    color:#6262de;
+}
+
+.info .fa-twitter {
+    color:#4646ff;
+}
+
+.info .fa-youtube {
+    color:#ff1515;
+}
+
+.info .fa-instagram {
+    color:#ab00cd;
+}
+
