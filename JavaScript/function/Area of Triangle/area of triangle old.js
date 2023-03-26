@@ -6,3 +6,4 @@ let s = (sideA+sideB+sideC)/2;
 let a = s*(s-sideA)*(s-sideB)*(s-sideC);
 let area = a**0.5;
 document.write(area);
+
