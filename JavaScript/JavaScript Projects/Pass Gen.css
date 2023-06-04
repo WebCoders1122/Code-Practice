@@ -1,0 +1,59 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    color: #540b0e;
+}
+
+body {
+    background-color: #335c67;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    border: #335c67 2px solid;
+    background-color: #fff3b0;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+}
+
+#pass_screen{
+    background-color: #FFF;
+    border: #335c67 1px solid;
+    border-radius: 4px;
+    padding: 3px;
+    font-size: 30px;
+}
+.container div{
+    display: flex;
+    justify-content: space-between;
+}
+.char_limit input{
+    width: 15%;
+    text-align: center;
+    padding: 3px;
+}
+
+.container div input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    background-color: #9e2a2b;
+    width: 100%;
+    color: #fff3b0;
+    padding: 4px;
+    border-radius: 3px;
+    border: #540b0e 2px solid;
+}
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Random Password Generator</title>
+    <link rel="stylesheet" href="Pass Gen.css">
+
+</head>
+<body>
+    <div class="container">
+        <p id="pass_screen">
+            Your Password
+        </p>
+        <div class="char_limit">
+            <label for="pass_length">Password Length</label>
+            <input type="number" id="pass_length" value="9">
+        </div>
+        <div class="upper">
+            <label for="upper_case">Include Upper Case Letters</label>
+            <input type="checkbox" id="upper_case" checked>
+        </div>
+        <div class="lower">
+            <label for="lower_case">Include Lower Case Letters</label>
+            <input type="checkbox" id="lower_case" checked>
+        </div>
+        <div class="numbers">
+            <label for="number">Include Numbers</label>
+            <input type="checkbox" id="number" checked>
+        </div>
+        <div class="specials">
+            <label for="special">Include Special Letters</label>
+            <input type="checkbox" id="special" checked>
+        </div>
+        <div class="btn">
+            <button onclick="genPass()">Generate</button>
+        </div>
+    </div>
+    <script src="Pass gen.js"></script>
+</body>
+</html>
+
