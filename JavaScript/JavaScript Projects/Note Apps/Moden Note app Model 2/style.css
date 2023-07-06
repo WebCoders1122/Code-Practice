@@ -21,7 +21,8 @@ body {
 /* to apply flex properties to any item */
 .add-box,
 .note,
-.note .footer {
+.note .footer,
+.background {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +85,7 @@ body {
 
 /* menu and menu items */
 .note .footer .menu {
-    width: 100px;
+    width: 110px;
     position: absolute;
     background-color: #fff;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.411);
@@ -108,6 +109,24 @@ body {
     background-color: #FFA5AB;
     transition: 0.4s ease-out;
 }
+
+/* add new note items */
+.background {
+    background-color: rgba(0, 0, 0, 0.411);
+    height: 100vh;
+    z-index: 1;
+}
+
+.background .add-container {
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.background .add-container .add-header {
+    
+}
+
+
 
 
 
