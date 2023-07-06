@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Modern Note App</title>
+</head>
+
+<body>
+    <div class="background">
+        <div class="add-container">
+            <div class="add-header">
+                <h2 class="add-heading">
+                    Add New Note
+                </h2>
+                <i class="fa-solid fa-square-xmark"></i>
+            </div>
+            <div class="add-body">
+                <form action="#">
+                <div class="title">
+                    <label for="title">Note Title</label>
+                    <input type="text" id="title" name="notetitle">
+                </div>
+                <div class="desc">
+                    <label for="desc">Note Description</label>
+                    <textarea name="notedesc" id="desc"></textarea>
+                </div>
+                <button id="btn">Add New Note</button>
+            </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="add-box">
+            <i class="fa-solid fa-circle-plus"></i>
+            <span>Add New Note</span>
+        </div>
+
+        <div class="note">
+            <div class="header">
+                <h3 class="heading">
+                    Note Heading
+                </h3>
+                <p class="body">
+                    This is note body.
+                </p>
+            </div>
+            <div class="footer">
+                <p class="date">Mon, May 15 2025</p>
+                <div class="settings">
+                    <i class="fa-solid fa-bars"></i>
+                    <div class="menu">
+                        <div class="edit">
+                            <i class="fa-solid fa-pen"></i>
+                            <span>Edit</span>
+                        </div>
+                        <div class="delete">
+                            <i class="fa-solid fa-trash"></i>
+                            <span>Delete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://kit.fontawesome.com/7ea35eabbf.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

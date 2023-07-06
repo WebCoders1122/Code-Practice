@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #DA627D;
+}
+
+.container {
+    margin: 50px;
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fill, 230px);
+}
+
+/* to apply flex properties to any item */
+.add-box,
+.note,
+.note .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-box,
+.note {
+    flex-direction: column;
+    background-color: #fff;
+    width: 230px;
+    height: 250px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.411);
+}
+
+/* addbox items */
+.add-box .fa-circle-plus {
+    font-size: 80px;
+    margin-bottom: 20px;
+    color: #FFA5AB;
+}
+
+.add-box span {
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFA5AB;
+}
+
+
+/* note items */
+.note {
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.note .header {
+    padding: 10px;
+}
+
+.note .header .heading {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #DA627D;
+}
+
+.note .header .body {
+    font-size: 16px;
+    color: #575757;
+}
+
+.note .footer {
+    width: 90%;
+    margin: 0 10px;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: #DA627D 3px solid;
+    position: relative;
+}
+
+/* menu and menu items */
+.note .footer .menu {
+    width: 100px;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.411);
+    bottom: 40px;
+    right: 8px;
+    border-radius: 5px;
+    transform: scale(0);
+}
+
+.note .footer .settings:hover .menu {
+    transform: scale(1);
+    transition: 0.3s ease;
+    transform-origin: bottom right;
+}
+
+.note .footer .menu div {
+    padding: 5px 10px;
+    margin: 3px 0px;
+}
+.note .footer .menu div:hover {
+    background-color: #FFA5AB;
+    transition: 0.4s ease-out;
+}
+
+
+
