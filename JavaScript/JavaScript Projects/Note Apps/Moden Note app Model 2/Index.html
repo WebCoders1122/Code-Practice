@@ -15,21 +15,20 @@
                 <h2 class="add-heading">
                     Add New Note
                 </h2>
-                <i class="fa-solid fa-square-xmark"></i>
+                <i id="closebtn" class="fa-solid fa-square-xmark"></i>
             </div>
             <div class="add-body">
                 <form action="#">
-                <div class="title">
-                    <label for="title">Note Title</label>
-                    <input type="text" id="title" name="notetitle">
-                </div>
-                <div class="desc">
-                    <label for="desc">Note Description</label>
-                    <textarea name="notedesc" id="desc"></textarea>
-                </div>
-                <button id="btn">Add New Note</button>
-            </form>
-
+                    <div class="title">
+                        <label for="title">Note Title</label>
+                        <input type="text" id="title" name="notetitle">
+                    </div>
+                    <div class="desc">
+                        <label for="desc">Note Description</label>
+                        <textarea name="notedesc" id="desc"></textarea>
+                    </div>
+                    <button id="btn">Add New Note</button>
+                </form>
             </div>
         </div>
     </div>
@@ -37,11 +36,11 @@
     <div class="container">
 
         <div class="add-box">
-            <i class="fa-solid fa-circle-plus"></i>
+            <i id="addbtn" class="fa-solid fa-circle-plus"></i>
             <span>Add New Note</span>
         </div>
 
-        <div class="note">
+        <!-- <div class="note">
             <div class="header">
                 <h3 class="heading">
                     Note Heading
@@ -66,9 +65,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
     </div>
+
 
     <script src="https://kit.fontawesome.com/7ea35eabbf.js" crossorigin="anonymous"></script>
     <script src="app.js"></script>
