@@ -27,11 +27,14 @@
             <input type="radio" class="option" name="question" value="4" id="option4">
             <label for="option4">Option D</label>
         </div>
-        <button id="btn" onclick="submitAns()">Submit Answer</button>
+        <div id="btns">
+            <button class="btnn side" id="btn1" onclick="previousQuestion()">Previous</button>
+            <button class="btnn submit" id="btn">Submit Answer</button>
+            <button class="btnn side" id="btn2" onclick="nextQuestion()">Next</button>
+        </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app3.js"></script>
 </body>
 
 </html>
-

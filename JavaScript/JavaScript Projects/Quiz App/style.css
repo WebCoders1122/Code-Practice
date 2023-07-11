@@ -18,34 +18,62 @@ h2 {
     color: #1c3365;
 }
 #box {
-    width: 40%;
+    width: 600px;
     background-color: #E5E5E5;
     padding: 20px;
     border-radius: 15px;
 }
 
 #box .item {
-    margin: 20px;
+    margin: 3px 3px 3px 20px;
+    height: 40px;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    padding: 10px;
 }
 
 #box .item label {
     font-size: 20px;
 }
+#box .item input {
+    width: 18px;
+    height: 18px;
+}
+#btns{
+    display: flex;
+    gap: 20px;
+}
 
-#box #btn {
+.btnn {
     font-size: 20px;
     font-weight: bold;
     color: #fff;
     padding: 10px 20px;
-    width: 100%;
+    /* width: 100%; */
     background-color: #1c3365;
     border: none;
     border-radius: 10px;
 }
 
-#box #btn:hover {
+.btnn:hover {
     background-color: #FCA311;
     color: #1c3365;
     transition: 0.5s;
 }
 
+.btnn.submit {
+    width: 50%;
+}
+
+.btnn.side {
+    width: 25%;
+}
+
+.correct {
+    background-color: lightgreen;
+}
+
+.incorrect {
+    background-color: lightpink;
+}
