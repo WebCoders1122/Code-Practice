@@ -8,13 +8,13 @@
 }
 
 body {
-    background-color: #eae2b7;
+    background-color: #E5E5E5;
     min-height: 100vh;
 }
 
 body,
 .head,
-.body ul{
+.container .body ul {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,84 +22,89 @@ body,
 
 .container {
     background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     width: 450px;
+    overflow: hidden;
 }
 
-.head {
+/* styling of header */
+.container .head {
+    background-color: #000;
+    color: #FCA311;
     justify-content: space-between;
-    padding: 20px 20px 10px;
-    border-bottom: 3px solid #fcbf49;
-}
-
-.heading {
-    font-size: 26px;
-    font-weight: 600;
-
-}
-
-.icons i {
+    width: 100%;
+    padding: 15px 30px;
+    border-bottom: 3px solid #FCA311;
     font-size: 30px;
-    color: #ccc;
-}
-.icons i:hover {
-    color: #f77f00;
 }
 
+.container .head .heading {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.container .head .icons i:hover {
+    color: #E5E5E5;
+}
+
+/* styling of body */
 
 .body ul {
     list-style-type: none;
     flex-wrap: wrap;
+    padding: 0 20px;
 }
 
 .body ul li {
     width: calc(100%/7);
     text-align: center;
+    margin: 15px 0;
 }
 
-.days {
+.body .weekdays {
+    color: #000;
+    font-size: 18px;
     font-weight: 700;
-    margin-top: 20px;
-    color: #f77f00;
 }
 
-.dates {
-    margin-bottom: 30px;
-
+.body .dates {
+    margin-bottom: 20px;
 }
-.date {
-    margin-top: 30px;
-    font-weight: 500;
-    line-height: 30px;
+
+.body .dates li {
+    color: #14213D;
+    font-size: 18px;
     position: relative;
     z-index: 1;
 }
+.body .dates li:hover {
+    color: #fff;
+    font-weight: 600;
+}
 
-.date:before {
+.body .dates li:before{
     position: absolute;
     content: '';
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     top: 50%;
     left: 50%;
-    z-index: -1;
     border-radius: 50%;
+    padding: 4px;
     transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
-.date:hover::before {
-    background-color: #e7e7e7;
-
+.body .dates li:hover::before{
+    background-color: #14213D;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
 }
 
-.date.inactive {
-    color: #aaaaaa;
+.body .dates li.inactive {
+    color: #ccc;
 }
 
-.date.active:before {
-    background-color: #f77f00;
-
-}
-.date.active {
-    color: #fff;
+.body .dates li.active::before {
+    background-color: #FCA311;
 }

@@ -1,56 +1,61 @@
-// all veriables
-const currentDate = document.querySelector('.heading'),
-    daysTag = document.querySelector('.dates'),
-    prevNextIcon = document.querySelectorAll(".icons i"),
-    months = ["January", "February", "March", "April", "May", "June", "July",
-        "August", "September", "October", "November", "December"];
+// required variables
+const monthHeading = document.querySelector('.heading'),
+    monthArray = ["January", "February", "March", "April", "May", "June", "July",
+        "August", "September", "October", "November", "December"],
+    nextPrevBtn = document.querySelectorAll('.icons i');
 
-// get date
+
+// to get date
 let date = new Date(),
-    currYear = date.getFullYear(),
-    currMonth = date.getMonth();
+    cMonth = date.getMonth(),
+    cYear = date.getFullYear(),
+    cDay = date.getDay();
 
-// 01 to show month and dates in calendar
-const renderCalendar = () => {
-    let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // last date of current month
-        liTag = ``,
-        firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // first day of current month
-        lastDayofMonth = new Date(currYear, currMonth + 1, 0).getDay(), // last day of current month
-        lastDateofprevMonth = new Date(currYear, currMonth, 0).getDate();
-    // 04 to show date of previous month
-    for (let i = firstDayofMonth; i > 0; i--) {
-        liTag += `<li class="date inactive">${lastDateofprevMonth - i + 1}</li>`
+// 01 to make calendar dynamic
+const calendarDynamic = () => {
+    // 02 showing month in html
+    monthHeading.innerText = `${monthArray[cMonth]} ${cYear}`
+    // 03 making dates dynamic in html
+    let endDateofcMonth = new Date(cYear, cMonth + 1, 0).getDate(),
+        endDayofcMonth = new Date(cYear, cMonth + 1, 0).getDay(),
+        startDayofcMonth = new Date(cYear, cMonth, 1).getDay(),
+        endDateofpMonth = new Date(cYear, cMonth, 0).getDate(),
+        liTag = '',
+        liTagCount = 0;
+    //05 to add previous month dates
+    for (let i = startDayofcMonth; i > 0; i--) {
+        liTag += `<li class="inactive">${endDateofpMonth - i + 1}</li>`
+        liTagCount++
     }
-    // 03 to show dates of current month
-    for (let i = 1; i <= lastDateofMonth; i++) {
-        let isToday = (i === new Date().getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear()) ? 'date active' : 'date';
-        liTag += `<li class="${isToday}">${i}</li>`
+    //04 for inserting dates of current month in html
+    for (let i = 1; i <= endDateofcMonth; i++) {
+        let activeClass = (i == new Date().getDate() && cMonth == new Date().getMonth() && cYear == new Date().getFullYear()) ? 'active' : '';
+        liTag += `<li class="${activeClass}">${i}</li>`
+        liTagCount++
     }
-    // 05 to show dates of next month
-    for (let i = lastDayofMonth; i < 6; i++) {
-        liTag += `<li class="date inactive">${i - lastDayofMonth + 1}</li>`
+    //08 to avoid resizing of container on different months
+    let loopCondition = 6;
+    loopCondition = (liTagCount <= 35) ? loopCondition + 7 : loopCondition + 0;
+    //06 for inserting dates of next month in html
+    for (let i = endDayofcMonth; i < loopCondition; i++) {
+        liTag += `<li class="inactive">${i - endDayofcMonth + 1}</li>`
     }
-    currentDate.innerText = `${months[currMonth]} ${currYear}`;
-    daysTag.innerHTML = liTag;
-    console.log(lastDateofMonth);
-}; renderCalendar();
+    document.querySelector('.dates').innerHTML = liTag;
+}; calendarDynamic();
 
-// 02 to make next previous icons working
-prevNextIcon.forEach(
-    (icon) => {
-        icon.addEventListener(
-            'click',
-            () => {
-                currMonth = (icon.id === 'next') ? currMonth + 1 : currMonth - 1;
-                // 06 fixing next and previous year months
-                if (currMonth < 0 || currMonth > 11) {
-                    date = new Date(currYear, currMonth)
-                    currYear = date.getFullYear(),
-                    currMonth = date.getMonth();
-                } else {
-                    date = new Date()
+// 07 next prev button functions
+nextPrevBtn.forEach(
+    (element) => {
+        element.addEventListener(
+            'click', () => {
+                (element.id == "next") ? cMonth++ : cMonth--;
+                if (cMonth < 0 || cMonth > 11) {
+                    date = new Date(cYear, cMonth);
+                    cMonth = date.getMonth();
+                    cYear = date.getFullYear(),
+                        cDay = date.getDay();
                 }
-                renderCalendar();
+                calendarDynamic()
             }
         )
     }
