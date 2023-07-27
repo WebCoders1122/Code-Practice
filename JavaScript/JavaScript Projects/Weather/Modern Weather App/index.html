@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather Application</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- portion of today weather -->
+        <div class="today">
+            <!-- input and search button -->
+            <div class="search">
+                <div class="search-btn">
+                    <input type="text" placeholder="Enter City" id="weather-search">
+                    <button type="button" id="btn" value="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div class="location">
+                    <p>Search By Location</p>
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <!-- <div class="search-btn">
+                    <input type="text" placeholder="Enter City" id="">
+                </div> -->
+            </div>
+            <!-- day and date -->
+            <div class="time">
+                <span class="day">
+                    -------
+                </span>
+                <span class="date">
+                    weather condition
+                </span>
+            </div>
+            <!-- icon -->
+            <div class="mainImage">
+                <img src="images/Asset 12.svg" alt="" width="120">
+            </div>
+            <!-- temperature -->
+            <div class="temp">
+                <span class="temperature">--</span> &nbsp; &#8451;
+            </div>
+        </div>
+
+        <!-- portion for forecast -->
+        <div class="forecast">
+            <!-- header with icons and temperature scales -->
+            <header class="header">
+                <span class="city">Forecast</span>
+                <div class="units">
+                    <span class="celsius">Celsius</span>
+                    <span class="fahrenheit inactive">Fahrenheit</span>
+                    <span class="darkicon"><i class="fa-solid fa-circle-half-stroke"></i></span>
+                </div>
+            </header>
+            <!-- timeline and week -->
+            <div class="weather-forecast">
+                <div class="weather-headings">
+                    <span class="timeline">Timeline</span>
+                    <span class="week inactive">Week</span>
+                </div>
+                <div class="weather-boxes">
+                    <div class="weatherbox">
+                        <img src="images/Asset 10.svg" width="50" alt="" class="icon">
+                        <div class="span weatherbox-temp"><p>--</p> &#8451;</div>
+                        <span class="weatherbox-time">--:--</span>
+                    </div>
+                    <div class="weatherbox">
+                        <img src="images/Asset 10.svg" width="50" alt="" class="icon">
+                        <div class="span weatherbox-temp"><p>--</p> &#8451;</div>
+                        <span class="weatherbox-time">--:--</span>
+                    </div>
+                    <div class="weatherbox">
+                        <img src="images/Asset 10.svg" width="50" alt="" class="icon">
+                        <div class="span weatherbox-temp"><p>--</p> &#8451;</div>
+                        <span class="weatherbox-time">--:--</span>
+                    </div>
+                    <div class="weatherbox">
+                        <img src="images/Asset 10.svg" width="50" alt="" class="icon">
+                        <div class="span weatherbox-temp"><p>--</p> &#8451;</div>
+                        <span class="weatherbox-time">--:--</span>
+                    </div>
+                    <div class="weatherbox">
+                        <img src="images/Asset 10.svg" width="50" alt="" class="icon">
+                        <div class="span weatherbox-temp"><p>--</p> &#8451;</div>
+                        <span class="weatherbox-time">--:--</span>
+                    </div>
+                </div>
+            </div>
+            <!-- today highlights -->
+            <div class="highlights">
+                <span class="highlights-text">Today's Highlights</span>
+                <div class="wide-boxes">
+                    <div class="weathrbox2">
+                        <span class="weatherbox2-heading">
+                            Humidity
+                        </span>
+                        <span class="weatherbox2-temp1">--</span>
+                    </div>
+                    <div class="weathrbox2">
+                        <span class="weatherbox2-heading">
+                            Feels Like
+                        </span>
+                        <span class="weatherbox2-temp2">--</span> &nbsp;
+                    </div>
+                    <div class="temp-min-max">
+                        <div class="min">
+                            <span>Min</span>
+                            <span id="min-temperatures">--</span> &#8451;
+                        </div>
+                        <div class="max">
+                            <span>Max</span>
+                            <span id="max-temperatures">--</span>
+                            <span>&#8451;</span>
+                        </div>
+                    </div>
+                    <div class="weathrbox2">
+                        <span class="weatherbox2-heading">
+                            Pressure
+                        </span>
+                        <span class="weatherbox2-temp3">--</span>
+                    </div>
+                    <div class="weathrbox2">
+                        <span class="weatherbox2-heading">
+                            WindSpeed
+                        </span>
+                        <span class="weatherbox2-temp4">--</span>
+                    </div>
+                    <div class="sun">
+                        <div class="sunrise">
+                            <span>Sunrise</span>
+                            <span id="sun-risers">--</span>
+                        </div>
+                        <div class="sunset">
+                            <span>Sunset</span>
+                            <span id="sun-setters">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="background">
+        <div class="cont">
+            <h1 class="cont-heading">
+                Loading Weather Data . . .
+            </h1>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/7ea35eabbf.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
