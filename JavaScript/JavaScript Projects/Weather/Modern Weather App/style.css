@@ -1,0 +1,425 @@
+/* Font poppins import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #90E0EF;
+    height: 100vh;
+}
+
+body.dark{
+    background-color: #000;
+}
+
+/* flex properties */
+
+body,
+.container,
+.today,
+.search,
+.search-btn,
+.location,
+.time,
+.temp,
+.forecast,
+.units,
+.header,
+.weather-forecast,
+.weather-headings,
+.weather-boxes,
+.weatherbox,
+.span,
+.highlights,
+.wide-boxes,
+.weathrbox2,
+.temp-min-max,
+.sun,
+.sunrise,
+.sunset,
+.max,
+.min,
+.background
+ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.abc {
+    width: 10%;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 25px;
+    overflow: hidden;
+    width: 90%;
+    /* max-height: 800px; */
+}
+
+.container.dark {
+    background-color: #3f3f3f;
+}
+
+/* left portion with dark background */
+
+.today {
+    background-color: #444444;
+    flex-direction: column;
+    justify-content: space-between;
+    /* gap: 25px; */
+    height: 95vh;
+    width: 30%;
+}
+
+.search {
+    margin-top: 20px;
+    width: 70%;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.search-btn {
+    width: 100%;
+}
+
+.search-btn input,
+#btn {
+    font-size: 16px;
+    color: #03045E;
+    padding: 5px 10px;
+    border: none;
+    text-align: center;
+}
+
+
+.search-btn input {
+    width: 70%;
+    border-radius: 10px 0 0 0;
+}
+
+#btn {
+    width: 30%;
+    color: #fff;
+    border-radius: 0;
+    background-color: #0077B6;
+}
+
+#btn.dark, .search-btn input.dark{
+    color: #fff;
+    background-color: #000;
+}
+#btn.dark {
+    background-color: #0077B6;
+}
+
+
+#btn:hover {
+    background-color: #575757;
+    color: #fff;
+}
+
+.location {
+    width: 100%;
+    transform: translateX(-2%);
+    border-radius: 10px 0 0 0;
+}
+
+.location,
+.location i {
+    color: #03045E;
+    background-color: #fff;
+    margin-left: 10px;
+    font-size: 16px;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.location.dark,
+.location i.dark {
+color: #fff;
+background-color: #000;
+}
+
+.location i {
+    font-size: 20px;
+}
+
+.time {
+    flex-direction: column;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.time.dark {
+    color: #fff;
+}
+
+.time .day {
+    font-size: 40px;
+    font-weight: 200;
+    padding: 0 10px;
+}
+
+.temp {
+    /* width: 100px; */
+    /* height: 100px; */
+    padding: 3px 15px;
+    color: #fff;
+    background-color: #0077B6;
+    border-radius: 15px;
+    font-size: 45px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.img img {
+    width: 150px;
+}
+
+/* right portion with lighter background */
+
+.forecast {
+    flex-direction: column;
+    background-color: #f7f7f7;
+    height: 95vh;
+    width: 70%;
+    justify-content: space-between;
+}
+.forecast.dark {
+    background-color: #3f3f3f;
+
+}
+
+.header {
+    color: #6a6a6a;
+    width: 90%;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 3px solid #e5e2e2;
+}
+.header.dark {
+    color: #ccc;
+}
+
+.units {
+    gap: 15px;
+}
+
+.units span.inactive {
+    color: #ccc;
+}
+
+.weather-forecast {
+    align-items: start;
+    flex-direction: column;
+    width: 97%;
+}
+
+.weather-headings span,
+.highlights-text
+ {
+    margin: 10px;
+    font-size: 26px;
+    font-weight: 500;
+    color: #0077B6;
+}
+
+.weather-headings span.dark,
+.highlights-text.dark {
+ color: #fff;
+}
+
+.weather-headings span.inactive {
+    color: #cfe3e6;
+}
+
+.weather-headings span.inactive.dark {
+    color: #767676;
+}
+
+.highlights {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.weather-boxes
+{
+    width: 95%;
+    gap: 10px;
+    justify-content: space-between;
+    margin: 0 10px 0 20px;
+}
+
+.weatherbox,
+.weathrbox2,
+.temp-min-max,
+.sun
+{
+    width: 130px;
+    height: 110px;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    /* box-shadow: 2px 2px 4px #e7e5e5; */
+    position: relative;
+    overflow: hidden;
+}
+.weatherbox.dark,
+.weathrbox2.dark,
+.temp-min-max.dark,
+.sun.dark {
+    background-color: #000;
+}
+
+.weathrbox2,
+.temp-min-max,
+.sun
+{
+    width: 220px;
+}
+.weatherbox img {
+    position: absolute;
+    /* width: 55px; */
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.weatherbox .span {
+    position: absolute;
+    bottom: 20px;
+}
+.weatherbox .span,
+.weatherbox2-heading,
+.weatherbox2-temp,
+.temp-min-max div span,
+.sun div span
+{
+    font-size: large;
+    font-weight: 700;
+    color: #3f3f3f;
+}
+
+.weatherbox .span.dark,
+.weatherbox2-heading.dark,
+.weatherbox2-temp.dark,
+.temp-min-max div span.dark,
+.sun div span.dark {
+    color: #ccc;
+}
+
+.temp-min-max .max span,
+.sun .sunset span
+{
+ color: #fff;
+}
+.temp-min-max .max,
+.sun .sunset
+{
+    background-color: #3f3f3f;
+    width: 50%;
+    height: 100%;
+}
+.temp-min-max .max.dark,
+.sun .sunset.dark {
+    background-color: #000;
+}
+.temp-min-max .min,
+.sun .sunrise
+{
+    width: 50%;
+    height: 100%;
+
+}
+.weatherbox2-temp,
+.weatherbox2-temp1,
+.weatherbox2-temp2,
+.weatherbox2-temp3,
+.weatherbox2-temp4
+{
+    font-weight: 500;
+    color: #767676;
+    font-size: 16px;
+}
+.weatherbox2-temp.dark,
+.weatherbox2-temp1.dark,
+.weatherbox2-temp2.dark,
+.weatherbox2-temp3.dark,
+.weatherbox2-temp4.dark {
+    color: #fff;
+}
+.weatherbox .weatherbox-time {
+    position: absolute;
+    bottom: 5px;
+}
+.weatherbox .weatherbox-time
+{
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.highlights {
+    align-items: start;
+    flex-direction: column;
+}
+
+.wide-boxes {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.weathrbox2 {
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.weathrbox2.dark {
+    background-color: #000;
+}
+
+.temp-min-max,
+.sun
+{
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.sunrise,
+.sunset,
+.max,
+.min {
+    flex-direction: column;
+}
+.abc {
+    width: 10%;
+}
+
+.min.dark{
+    color: #fff;
+}
+.background {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    opacity: 0;
+    z-index: -2;
+}
+.background.show {
+    z-index: 3;
+    opacity: 1;
+}
+.cont-heading {
+    font-size: 60px;
+    color: #d9d9d9;
+}
