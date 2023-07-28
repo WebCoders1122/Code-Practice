@@ -44,5 +44,30 @@ body,
     font-weight: 500;
     border-radius: 5px;
     text-align: center;
-    margin: 15px 5px;
+    margin: 20px 5px;
+}
+
+.buttons button {
+    font-weight: 800;
+    color: #fff;
+    background-color: cornflowerblue;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: none;
+    margin: 15px 15px;
+}
+.buttons button.reset:hover {
+    background-color: green;
+    color: white;
+    transition: 0.3s;
+}
+.buttons button.start:hover {
+    background-color: blueviolet;
+    color: white;
+    transition: 0.3s;
+}
+.buttons button.stop:hover {
+    background-color: red;
+    color: white
+    transition: 0.3s;
 }
