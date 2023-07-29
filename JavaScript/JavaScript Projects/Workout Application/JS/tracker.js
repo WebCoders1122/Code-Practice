@@ -1,26 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+export default class workoutTracker {
+    constructor(root) {
+        this.root = root;
+        this.root.insertAdjacentHTML('afterbegin', workoutTracker.html())
+    }
+    static html() {
+        return `<table>
+                    <thead class="header">
+                        <tr>
+                            <th>Date</th>
+                            <th>Workout</th>
+                            <th>Duration</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="entries">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Workout Tracker</title>
-</head>
-
-<body>
-    <div id="container">
-        <!-- <table>
-            <thead class="header">
-                <tr>
-                    <th>Date</th>
-                    <th>Workout</th>
-                    <th>Duration</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody class="entries">
-                <tr>
+                    </tbody>
+                    <tbody class="add-btn">
+                        <tr>
+                            <td colspan="4">
+                                <span>Add New Workout &plus;</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>`
+    }
+    static enterieshtml() {
+        return `<tr>
                     <td>
                         <input type="date" class="date">
                     </td>
@@ -42,19 +48,7 @@
                     <td>
                         <button class="close">&times;</button>
                     </td>
-                </tr>
-            </tbody>
-            <tbody class="add-btn">
-                <tr>
-                    <td colspan="4">
-                        <span>Add New Workout &plus;</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table> -->
-    </div>
-    <script type="module" src="./script.js"></script>
-
-</body>
-
-</html>
+                </tr>`
+    }
+    
+}

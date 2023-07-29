@@ -8,17 +8,102 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
-    background-color: #eee;
-}
 /* flex properties */
-body
-{
-display: flex;
-align-items: center;
-justify-content: center;
+body,
+.close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.container table{
- width: 800px;
+#container table {
+    width: 800px;
+    border-collapse: collapse;
+    border: none;
+    font-size: 16px;
+    margin: 1em;
+}
+
+.header tr th {
+    font-size: 1.2em;
+    text-align: left;
+    color: #fff;
+    background-color: violet;
+    border-top: #666 3px solid;
+    border-bottom: #666 3px solid;
+
+}
+
+.header tr,
+.header th {
+    padding: 0.7em;
+}
+
+.entries tr {
+    background-color: #eee;
+}
+
+.entries tr:nth-child(odd) {
+    background-color: #ddd;
+}
+
+.entries tr td {
+    padding: 0.7em;
+}
+
+.date,
+#workout-options,
+.duration,
+.duration-text {
+    display: inline-block;
+    font-size: 1em;
+    padding: 0.5em;
+    height: 2.5em;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.duration {
+    width: 5em;
+    text-align: right;
+}
+
+.close {
+    height: 1.5em;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: red;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0.4em;
+    border-radius: 0.2em;
+}
+
+.close:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+.add-btn tr {
+    background-color: #fff;
+    border-top: #666 3px solid;
+    border-bottom: #666 3px solid;
+    text-align: right;
+}
+
+.add-btn tr td {
+    padding: 1em 0.5em;
+}
+
+.add-btn tr td span {
+    color: violet;
+    padding: 0.5em;
+    font-weight: 600;
+    border-radius: 0.2em;
+}
+
+.add-btn tr td span:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
