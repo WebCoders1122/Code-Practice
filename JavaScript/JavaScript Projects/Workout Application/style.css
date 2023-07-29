@@ -7,3 +7,18 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
+body {
+    background-color: #eee;
+}
+/* flex properties */
+body
+{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.container table{
+ width: 800px;
+}
