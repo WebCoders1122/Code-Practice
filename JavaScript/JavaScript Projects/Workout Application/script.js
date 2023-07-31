@@ -1,6 +1,4 @@
-import workoutTracker from "./JS/tracker.js";
-
-const container = document.getElementById('container');
-// console.log('abc')
-new workoutTracker(container);
-// container.insertAdjacentElement('afterbegin', workoutTracker.html())
+import {workout } from './JS/tracker.js'
+const container = document.querySelector('#container');
+new workout(container);
+container.addEventListener
