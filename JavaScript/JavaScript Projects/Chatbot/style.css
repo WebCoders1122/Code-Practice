@@ -23,18 +23,30 @@ body {
 .chatbot {
     background-color: #fff;
     position: fixed;
-    bottom: 20px;
+    bottom: 80px;
     right: 40px;
     border-radius: 15px;
     overflow: hidden;
     width: 350px;
     height: 450px;
+    transform: scale(0.5);
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.active_chatbot .chatbot {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 0;
 }
 
 /* Flex properties */
 .chatbox,
 .chat-input,
-.incoming {
+.incoming,
+.chat_opener {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,6 +54,7 @@ body {
 
 .chatbot header {
     background-color: #6A994E;
+    position: relative;
 }
 
 .heading {
@@ -50,11 +63,21 @@ body {
     padding: 0.7rem 0;
 }
 
+.chatbot header span {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #fff;
+    font-weight: 700;
+    display: none;
+}
+
 .chatbox {
     padding: 0 15px;
     list-style-type: none;
     flex-direction: column;
     align-items: flex-start;
+    overflow: auto;
 }
 
 
@@ -64,6 +87,7 @@ body {
 
 .incoming {
     align-items: baseline;
+    justify-content: flex-start;
     margin-left: -5px;
 }
 
@@ -77,7 +101,7 @@ body {
 }
 
 .chat p {
-    font-size: 0.9em;
+    font-size: 0.9rem;
     color: #000;
     background-color: #f8efdf;
     border-radius: 10px 10px 10px 0;
@@ -109,13 +133,14 @@ body {
     resize: none;
     padding: 5px 10px;
     font: inherit;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     color: #4a4a4a;
-    height: 50px;
+    height: 55px;
+    max-height: 190px;
 }
 
 .chat-input span {
-    font-size: 1.8em;
+    font-size: 1.8rem;
     color: #6A994E;
     visibility: hidden;
     cursor: pointer;
@@ -123,4 +148,47 @@ body {
 
 .chat-input textarea:valid~span {
     visibility: visible;
+}
+
+.chat_opener {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #6A994E;
+    color: #fff;
+    cursor: pointer;
+}
+
+.chat_opener span {
+    position: absolute;
+    font-size: 1.8rem;
+}
+
+.active_chatbot .chat_opener span:first-child,
+.chat_opener span:last-child {
+    opacity: 0;
+}
+
+.active_chatbot .chat_opener span:last-child,
+.chat_opener span:first-child {
+    opacity: 1;
+}
+
+/* making app responsive */
+@media(max-width:490px) {
+    .chatbot {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .chatbot header span {
+        display: block;
+    }
 }
