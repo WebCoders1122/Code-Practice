@@ -1,0 +1,19 @@
+.container {
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 3rem;
+    padding: 2rem 3rem;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 70vw;
+}
+
+.space-between {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section {
+    margin: 1.2rem 0;
+}
