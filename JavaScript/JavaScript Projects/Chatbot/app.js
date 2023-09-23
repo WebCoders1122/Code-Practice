@@ -8,7 +8,7 @@ const chat_toggle_open_btn = document.querySelector('.fa-comment-medical');
 const chat_close_btn = document.querySelector('.chat_close'); // for mobiles etc
 let input_area_initial_height = input_area.scrollHeight;
 // open AI data
-const ai_api_key = `Your API Key`;
+const ai_api_key = `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`;
 const ai_url = `https://api.openai.com/v1/chat/completions`;
 
 // Misc functions
