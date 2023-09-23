@@ -1,0 +1,11 @@
+button {
+    display: block;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5em;
+    background-color: cornflowerblue;
+    color: white;
+}
