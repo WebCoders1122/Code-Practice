@@ -37,3 +37,16 @@ th {
     padding: 0.3rem 1rem;
     width: fit-content;
 }
+
+@media print {
+    table {
+        margin-bottom: 0.4rem;
+        margin-bottom: 0.4em;
+    }
+
+    td,
+    th {
+        padding: 0.1rem 0.4rem;
+        width: fit-content;
+    }
+}

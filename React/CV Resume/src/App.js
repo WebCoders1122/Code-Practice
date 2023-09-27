@@ -43,8 +43,8 @@ const App = () => {
             <div>
                 <Heading class_Name='sub-heading' content='Hobbies:' />
                 <List data={Hobbies} />
-
             </div>
+            <button className='button' onClick={() => window.print()}>Print CV</button>
         </div>
     )
 };

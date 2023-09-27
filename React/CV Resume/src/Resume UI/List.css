@@ -17,3 +17,9 @@ li {
     font-weight: 500;
     font-size: 1.1rem;
 }
+
+@media print {
+    ul {
+        margin: 0 0 0.3rem 1rem;
+    }
+}
