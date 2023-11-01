@@ -1,0 +1,25 @@
+ul {
+    padding: 0 0.5rem;
+    margin: 0 0 1rem 1rem;
+    font: inherit;
+    list-style-type: none;
+}
+
+ul li::before {
+    content: '✓';
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-right: 0.8rem;
+    color: #FF8600;
+}
+
+li {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+@media print {
+    ul {
+        margin: 0 0 0.3rem 1rem;
+    }
+}

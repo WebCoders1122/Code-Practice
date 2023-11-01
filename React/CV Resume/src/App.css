@@ -1,0 +1,55 @@
+.container {
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 1rem;
+    padding: 2rem 3rem;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 75vw;
+}
+
+.space-between {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section {
+    margin: 1.2rem 0;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #758BFD;
+    background-color: #758BFD;
+    color: #fff;
+    padding: 0.5rem 10rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: #fff;
+    color: #758BFD;
+    transition: 0.4s;
+}
+
+@media print {
+    .container {
+        width: 100vw;
+        margin: 1rem;
+        padding: 0;
+        border-radius: none;
+        box-shadow: none;
+    }
+
+    .section {
+        margin: 0.5rem 0;
+    }
+
+    button {
+        display: none;
+    }
+}
