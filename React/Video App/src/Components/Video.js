@@ -1,7 +1,6 @@
 import './Video.css'
 
-const Video = ({ video_data }) => {
-    console.log(video_data)
+const Video = ({ video_data, children }) => {
     return (
         <div className='container'>
             <div className="pic">
@@ -12,6 +11,7 @@ const Video = ({ video_data }) => {
             <div className="views">
                 {video_data.views} views <span>.</span> {video_data.time}
             </div>
+            {children}
         </div>
     )
 }
