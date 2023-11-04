@@ -1,6 +1,6 @@
 import './App.css';
 import { Add_video } from './Components/Add_video';
-import { PlayButton } from './Components/PlayButton';
+import PlayButton from './Components/PlayButton';
 import Video from './Components/Video';
 import Data from './Data/Data';
 import { useState } from 'react';
@@ -11,9 +11,12 @@ function App() {
 
   const add_Video = (video) => {
     set_videos([...videos, {
-      ...video, id: videos.leb
-        + 1
+      ...video, id: videos.length + 1
     }])
+  };
+
+  const delete_video = (id) => {
+    set_videos(videos.filter(video => video.id !== id))
   };
 
 
@@ -24,7 +27,9 @@ function App() {
         return (
           <Video
             key={index}
-            video_data={video_data}>
+            video_data={video_data}
+            delete_video={delete_video}
+          >
             <PlayButton
               onPlay={() => console.log('playing')}
               onPause={() => console.log('Paused')}

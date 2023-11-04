@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import './Add_video.css';
 
 export const Add_video = ({ add_Video }) => {
-    const [video, set_video] = useState({
-        title: 'HTML introduction',
-        views: '20k',
+    const initial_object = {
+        title: '',
+        views: '',
         time: '1 month ago',
         channel: 'Code video School',
-    });
+    };
+    const [video, set_video] = useState(initial_object);
     const handle_change = (e) => {
         set_video({
             ...video,
@@ -17,6 +18,7 @@ export const Add_video = ({ add_Video }) => {
     const handle_click = (e) => {
         e.preventDefault();
         add_Video(video)
+        set_video(initial_object)
     };
     return (
         <form>
@@ -25,14 +27,16 @@ export const Add_video = ({ add_Video }) => {
                 onChange={handle_change}
                 placeholder='Title'
                 name='title'
+                value={video.title}
             />
             <input
                 type='text'
                 onChange={handle_change}
                 placeholder='Views'
                 name='views'
+                value={video.views}
             />
-            <button onClick={handle_click}>Add Video</button>
+            <button className='submit' onClick={handle_click}>Add Video</button>
         </form>
     )
 }
