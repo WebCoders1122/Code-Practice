@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 function App() {
   const [videos, set_videos] = useState(Data);
+  const [editable_video, set_editable_object] = useState(null);
 
   const add_Video = (video) => {
     set_videos([...videos, {
@@ -19,16 +20,33 @@ function App() {
     set_videos(videos.filter(video => video.id !== id))
   };
 
+  const edit_video = (id) => {
+    set_editable_object(videos.find(video => video.id === id))
+  };
+
+  const update_video = (video) => {
+    let index = videos.findIndex(v => v.id == video.id)
+    let newVideo = [...videos]
+    newVideo.splice(index, 1, video)
+    set_videos(newVideo)
+    console.log(newVideo)
+  };
+
 
   return (
     <div className="App" onClick={() => console.log('App')}>
-      <Add_video add_Video={add_Video}></Add_video>
+      <Add_video
+        add_Video={add_Video}
+        editable_video={editable_video}
+        update_video={update_video}
+      ></Add_video>
       {videos.map((video_data, index) => {
         return (
           <Video
             key={index}
             video_data={video_data}
             delete_video={delete_video}
+            edit_video={edit_video}
           >
             <PlayButton
               onPlay={() => console.log('playing')}
