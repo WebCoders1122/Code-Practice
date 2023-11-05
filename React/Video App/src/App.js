@@ -5,10 +5,15 @@ import Video from './Components/Video';
 import Data from './Data/Data';
 import { useState } from 'react';
 
+const editable_object = {
+  id: '',
+  title: '',
+  views: ''
+}
 
 function App() {
   const [videos, set_videos] = useState(Data);
-  const [editable_video, set_editable_object] = useState(null);
+  const [editable_video, set_editable_video] = useState(editable_object);
 
   const add_Video = (video) => {
     set_videos([...videos, {
@@ -21,7 +26,7 @@ function App() {
   };
 
   const edit_video = (id) => {
-    set_editable_object(videos.find(video => video.id === id))
+    set_editable_video(videos.find(video => video.id === id))
   };
 
   const update_video = (video) => {
@@ -29,7 +34,7 @@ function App() {
     let newVideo = [...videos]
     newVideo.splice(index, 1, video)
     set_videos(newVideo)
-    console.log(newVideo)
+    set_editable_video(editable_object)
   };
 
 
