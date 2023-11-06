@@ -7,13 +7,16 @@ import { Experience, Experience_header } from './Data/Experience';
 import List from './Resume UI/List';
 import Skills from './Data/Skills';
 import Hobbies from './Data/Hobbies'
+import Academic_form from './Input Components/Academic_form';
 
 const App = () => {
 
     return (
         <>
             <div className='container'>
-
+                <Heading class_Name='main-heading' content='Resume Data Form' />
+                <Heading class_Name='sub-heading' content='Academic Records:' />
+                <Academic_form />
             </div>
             <div className='container'>
                 <Heading class_Name='main-heading' content='Resume of XYZ' />
