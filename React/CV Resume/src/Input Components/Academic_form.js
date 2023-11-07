@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Academic_form.css'
 
-const Academic_form = ({ delete_education }) => {
+
+const initial_edu_entry = {
+    degree: '',
+    specialization: '',
+    institute: '',
+    year: '',
+    marks: ''
+};
+
+const Academic_form = ({ add_education }) => {
+    const [new_edu_entry, set_new_edu_entry] = useState({
+        degree: '-',
+        specialization: '-',
+        institute: '-',
+        year: '-',
+        marks: '-'
+    });
     const change_handle = (e) => {
-        console.log(e.target.name, e.target.value)
+        set_new_edu_entry({
+            ...new_edu_entry,
+            [e.target.name]: e.target.value
+        })
     };
 
     const submit_handle = (e) => {
         e.preventDefault();
-        console.log('submit')
+        add_education(new_edu_entry)
     };
 
     return (
