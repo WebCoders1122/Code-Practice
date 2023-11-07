@@ -1,4 +1,16 @@
-form {
+.inputs {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 300px);
+    grid-template-columns: repeat(auto-fill, 49%);
+    gap: 10px;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+}
+
+input {
+    box-sizing: border-box;
+    padding: .3em 1em;
+    border-radius: 0.3em;
+    border: 1px solid #666;
+    font-size: 1.2rem;
 }

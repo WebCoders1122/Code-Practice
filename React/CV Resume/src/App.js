@@ -11,6 +11,14 @@ import Academic_form from './Input Components/Academic_form';
 
 const App = () => {
 
+    // academic record functions
+    const delete_handler = (id) => {
+        console.log(id)
+    };
+    const edit_handler = (id) => {
+        console.log('edit', id)
+    };
+
     return (
         <>
             <div className='container'>
@@ -35,7 +43,7 @@ const App = () => {
                 {/* Academic Records */}
                 <div>
                     <Heading class_Name='sub-heading' content='Academic Records:' />
-                    <Table header={academic_header} data={Academic} />
+                    <Table header={academic_header} data={Academic} delete_handler={delete_handler} edit_handler={edit_handler} />
                 </div>
                 {/* Skills Records */}
                 <div>
@@ -45,7 +53,7 @@ const App = () => {
                 {/* Experience Records */}
                 <div>
                     <Heading class_Name='sub-heading' content='Experience:' />
-                    <Table header={Experience_header} data={Experience} />
+                    <Table header={Experience_header} data={Experience} delete_handler={delete_handler} edit_handler={edit_handler} />
                 </div>
                 {/* Hobbies Records */}
                 <div>

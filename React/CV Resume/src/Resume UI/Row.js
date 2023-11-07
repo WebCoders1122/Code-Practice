@@ -5,6 +5,7 @@ const Row = ({ header }) => {
     return (
         <tr>
             {header.map((heading, index) => <td key={index}>{heading}</td>)}
+            <td>Modify</td>
         </tr>
     )
 };

@@ -1,0 +1,36 @@
+td.buttons {
+    margin: 0;
+    padding: 0.1em;
+}
+
+td span {
+    font-weight: 600;
+    margin: 0.2em 0.4em;
+    display: block;
+    border-radius: 0.3em;
+    padding: 0.1em 0.5em;
+}
+
+span.edit {
+    background-color: #FF8600;
+    color: white;
+    border: 1px solid #FF8600;
+}
+
+span.edit:hover {
+    background-color: #fff;
+    color: #FF8600;
+    transition: 0.4s;
+}
+
+span.del {
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+
+span.del:hover {
+    background-color: #fff;
+    color: red;
+    transition: 0.4s;
+}
