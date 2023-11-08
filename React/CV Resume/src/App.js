@@ -13,6 +13,7 @@ import { useState } from 'react';
 const App = () => {
     const [education, set_education] = useState(Academic);
     const [experiences, set_experiences] = useState(Experience);
+    const [editable_education, set_editable_education] = useState(null);
 
     // add education
     const add_education = (new_entry) => {
@@ -30,7 +31,12 @@ const App = () => {
         }
     };
     const edit_handler = (id, data_name) => {
-        console.log('edit', id)
+        if (data_name == 'experiences') {
+            // set_experiences(experiences.filter(edu_entry => edu_entry.id !== id))
+        } else {
+            let editable_education = education.find(edu_entry => edu_entry.id === id)
+            set_editable_education(editable_education)
+        }
     };
 
     return (
@@ -38,7 +44,7 @@ const App = () => {
             <div className='container'>
                 <Heading class_Name='main-heading' content='Resume Data Form' />
                 <Heading class_Name='sub-heading' content='Academic Records:' />
-                <Academic_form add_education={add_education} />
+                <Academic_form add_education={add_education} editable_education={editable_education} />
             </div>
             <div className='container'>
                 <Heading class_Name='main-heading' content='Resume of XYZ' />

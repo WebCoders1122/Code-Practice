@@ -10,14 +10,8 @@ const initial_edu_entry = {
     marks: ''
 };
 
-const Academic_form = ({ add_education }) => {
-    const [new_edu_entry, set_new_edu_entry] = useState({
-        degree: '-',
-        specialization: '-',
-        institute: '-',
-        year: '-',
-        marks: '-'
-    });
+const Academic_form = ({ add_education, editable_education }) => {
+    const [new_edu_entry, set_new_edu_entry] = useState(initial_edu_entry);
     const change_handle = (e) => {
         set_new_edu_entry({
             ...new_edu_entry,
@@ -28,6 +22,9 @@ const Academic_form = ({ add_education }) => {
     const submit_handle = (e) => {
         e.preventDefault();
         add_education(new_edu_entry)
+        // console.log(editable_education)
+        set_new_edu_entry(initial_edu_entry)
+
     };
 
     return (
@@ -38,6 +35,7 @@ const Academic_form = ({ add_education }) => {
                     name='degree'
                     placeholder='degree'
                     onChange={change_handle}
+                    value={new_edu_entry.degree}
 
                 />
                 <input
@@ -45,6 +43,7 @@ const Academic_form = ({ add_education }) => {
                     name='specialization'
                     placeholder='specialization'
                     onChange={change_handle}
+                    value={new_edu_entry.specialization}
 
                 />
                 <input
@@ -52,6 +51,7 @@ const Academic_form = ({ add_education }) => {
                     name='institute'
                     placeholder='institute'
                     onChange={change_handle}
+                    value={new_edu_entry.institute}
 
                 />
                 <input
@@ -59,6 +59,7 @@ const Academic_form = ({ add_education }) => {
                     name='year'
                     placeholder='year'
                     onChange={change_handle}
+                    value={new_edu_entry.year}
 
                 />
                 <input
@@ -66,6 +67,7 @@ const Academic_form = ({ add_education }) => {
                     name='marks'
                     placeholder='marks'
                     onChange={change_handle}
+                    value={new_edu_entry.marks}
                 />
             </div>
             <button onClick={submit_handle}>Add Education</button>
