@@ -19,6 +19,8 @@ function App() {
     set_videos([...videos, {
       ...video, id: videos.length + 1
     }])
+
+    console.log(videos)
   };
 
   const delete_video = (id) => {
@@ -35,6 +37,8 @@ function App() {
     newVideo.splice(index, 1, video)
     set_videos(newVideo)
     set_editable_video(editable_object)
+    console.log(videos)
+
   };
 
 

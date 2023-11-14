@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Academic_form.css'
 
 
@@ -9,9 +9,18 @@ const initial_edu_entry = {
     year: '',
     marks: ''
 };
+const initial_ed = {
+    id: '',
+    degree: '',
+    specialization: '',
+    institute: '',
+    year: '',
+    marks: ''
+}
 
-const Academic_form = ({ add_education, editable_education }) => {
+const Academic_form = ({ add_education, editable_education, update_education }) => {
     const [new_edu_entry, set_new_edu_entry] = useState(initial_edu_entry);
+    const [editable, set_editable] = useState(initial_ed);
     const change_handle = (e) => {
         set_new_edu_entry({
             ...new_edu_entry,
@@ -21,12 +30,24 @@ const Academic_form = ({ add_education, editable_education }) => {
 
     const submit_handle = (e) => {
         e.preventDefault();
-        add_education(new_edu_entry)
-        // console.log(editable_education)
-        set_new_edu_entry(initial_edu_entry)
+        if (editable_education.id !== '') {
+            update_education(new_edu_entry)
+            console.log(new_edu_entry)
+        } else {
+            add_education(new_edu_entry)
+            console.log(new_edu_entry)
 
+        }
+        set_new_edu_entry(initial_edu_entry)
     };
 
+
+
+    if (editable_education.id !== editable.id) {
+        console.log('abc')
+        set_new_edu_entry(editable_education);
+        set_editable(editable_education)
+    }
     return (
         <form>
             <div className='inputs'>

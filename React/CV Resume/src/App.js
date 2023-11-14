@@ -9,18 +9,49 @@ import Skills from './Data/Skills';
 import Hobbies from './Data/Hobbies'
 import Academic_form from './Input Components/Academic_form';
 import { useState } from 'react';
+import Experience_Form from './Input Components/Experience_Form';
+
+const initial_edu_editable = {
+    id: '',
+    degree: '',
+    specialization: '',
+    institute: '',
+    year: '',
+    marks: ''
+}
 
 const App = () => {
     const [education, set_education] = useState(Academic);
     const [experiences, set_experiences] = useState(Experience);
-    const [editable_education, set_editable_education] = useState(null);
+    const [editable_education, set_editable_education] = useState({
+        id: '',
+        degree: '',
+        specialization: '',
+        institute: '',
+        year: '',
+        marks: ''
+    });
 
+
+
+
+    // Education
     // add education
     const add_education = (new_entry) => {
         set_education([...education, { id: education.length + 1, ...new_entry }])
+        console.log('add')
         console.log(education)
     };
-
+    //update education 
+    const update_education = (new_entry) => {
+        let index = education.findIndex(object => new_entry.id == object.id)
+        let new_edu = [...education]
+        new_edu.splice(index, 1, new_entry)
+        set_education(new_edu)
+        set_editable_education(initial_edu_editable)
+        console.log('update')
+        console.log(education, new_entry)
+    };
     // academic record functions
     const delete_handler = (id, data_name) => {
         console.log(id, data_name)
@@ -34,9 +65,15 @@ const App = () => {
         if (data_name == 'experiences') {
             // set_experiences(experiences.filter(edu_entry => edu_entry.id !== id))
         } else {
-            let editable_education = education.find(edu_entry => edu_entry.id === id)
-            set_editable_education(editable_education)
+            let editable_edu = education.find(edu_entry => edu_entry.id === id)
+            set_editable_education(editable_edu)
         }
+    };
+
+    // Experience
+    // add experiece
+    const add_experience = (new_experience) => {
+        set_experiences([...experiences, { id: experiences.length + 1, ...new_experience }])
     };
 
     return (
@@ -44,7 +81,9 @@ const App = () => {
             <div className='container'>
                 <Heading class_Name='main-heading' content='Resume Data Form' />
                 <Heading class_Name='sub-heading' content='Academic Records:' />
-                <Academic_form add_education={add_education} editable_education={editable_education} />
+                <Academic_form add_education={add_education} editable_education={editable_education} update_education={update_education} />
+                <Heading class_Name='sub-heading' content='Experiences Records:' />
+                <Experience_Form add_experience={add_experience} />
             </div>
             <div className='container'>
                 <Heading class_Name='main-heading' content='Resume of XYZ' />

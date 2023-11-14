@@ -27,7 +27,7 @@ export const Add_video = ({ add_Video, editable_video, update_video }) => {
 
     const handle_click = (e) => {
         e.preventDefault();
-        if (editable_video) {
+        if (editable_video.id !== '') {
             update_video(video)
             console.log(video)
         } else {
@@ -36,7 +36,7 @@ export const Add_video = ({ add_Video, editable_video, update_video }) => {
         set_video(initial_object)
     };
 
-    if (editable_video !== editable) {
+    if (editable_video.id !== editable.id) {
         set_video(editable_video)
         set_editable(editable_video)
     }
