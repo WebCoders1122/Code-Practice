@@ -10,6 +10,7 @@ import Hobbies from './Data/Hobbies'
 import Academic_form from './Input Components/Academic_form';
 import { useState } from 'react';
 import Experience_Form from './Input Components/Experience_Form';
+import Hobbies_Skills_form from './Input Components/Hobbies_Skills_form';
 
 const initial_edu_editable = {
     id: '',
@@ -19,18 +20,18 @@ const initial_edu_editable = {
     year: '',
     marks: ''
 }
+const initial_exp = {
+    id: '',
+    duration: '',
+    company: '',
+    post: ''
+};
 
 const App = () => {
     const [education, set_education] = useState(Academic);
     const [experiences, set_experiences] = useState(Experience);
-    const [editable_education, set_editable_education] = useState({
-        id: '',
-        degree: '',
-        specialization: '',
-        institute: '',
-        year: '',
-        marks: ''
-    });
+    const [editable_experience, set_editable_experience] = useState(initial_exp)
+    const [editable_education, set_editable_education] = useState(initial_edu_editable);
 
 
 
@@ -63,7 +64,8 @@ const App = () => {
     };
     const edit_handler = (id, data_name) => {
         if (data_name == 'experiences') {
-            // set_experiences(experiences.filter(edu_entry => edu_entry.id !== id))
+            let editable_exp = experiences.find(exp_entry => exp_entry.id == id)
+            set_editable_experience(editable_exp)
         } else {
             let editable_edu = education.find(edu_entry => edu_entry.id === id)
             set_editable_education(editable_edu)
@@ -75,15 +77,24 @@ const App = () => {
     const add_experience = (new_experience) => {
         set_experiences([...experiences, { id: experiences.length + 1, ...new_experience }])
     };
+    const update_experience = (updateable_exp) => {
+        let index = experiences.findIndex(exp => exp.id == updateable_exp.id)
+        let exp_array = [...experiences];
+        exp_array.splice(index, 1, updateable_exp)
+        set_experiences(exp_array);
+        set_editable_experience(initial_exp)
+    };
 
     return (
         <>
-            <div className='container'>
+            <div className='container2'>
                 <Heading class_Name='main-heading' content='Resume Data Form' />
                 <Heading class_Name='sub-heading' content='Academic Records:' />
                 <Academic_form add_education={add_education} editable_education={editable_education} update_education={update_education} />
                 <Heading class_Name='sub-heading' content='Experiences Records:' />
-                <Experience_Form add_experience={add_experience} />
+                <Experience_Form add_experience={add_experience} editable_experience={editable_experience} update_experience={update_experience} />
+                <Heading class_Name='sub-heading' content='Hobbies and Skills:' />
+                <Hobbies_Skills_form />
             </div>
             <div className='container'>
                 <Heading class_Name='main-heading' content='Resume of XYZ' />

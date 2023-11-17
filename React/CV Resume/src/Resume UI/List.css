@@ -16,6 +16,33 @@ ul li::before {
 li {
     font-weight: 500;
     font-size: 1.1rem;
+    position: relative;
+    margin: 0.4rem 0;
+}
+
+li .buttons {
+    position: absolute;
+    right: 0;
+    margin: 0.4em 0.4em;
+
+
+}
+
+li .buttons span {
+    font-weight: 600;
+    padding: 0.1em 0.5em;
+    margin: 0.4em 0em;
+
+}
+
+li .buttons .del {
+    border-radius: 0.3em 0em 0em 0.3em;
+
+}
+
+li .buttons .edit {
+    border-radius: 0em 0.3em 0.3em 0em;
+
 }
 
 @media print {

@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import './Experience_Form.css';
 
-const initial_edu_obj = {
+const initial_exp_obj = {
     post: '',
     duration: '',
     company: ''
 };
 
-const Experience_Form = ({ add_experience }) => {
+const initial_editable_exp = {
+    id: '',
+    duration: '',
+    company: '',
+    post: ''
+};
 
-    const [new_experience, set_new_experience] = useState(initial_edu_obj);
+const Experience_Form = ({ add_experience, editable_experience, update_experience }) => {
+
+    const [new_experience, set_new_experience] = useState(initial_exp_obj);
+    const [editable_exp, set_editable_exp] = useState(initial_editable_exp);
 
     const change_handle = (e) => {
         set_new_experience({ ...new_experience, [e.target.name]: e.target.value })
@@ -17,10 +25,19 @@ const Experience_Form = ({ add_experience }) => {
 
     const submit_handle = (e) => {
         e.preventDefault()
-        add_experience(new_experience)
-        set_new_experience(initial_edu_obj)
+        if (editable_exp.id !== '') {
+            update_experience(new_experience)
+        } else {
+            add_experience(new_experience)
+        }
+        set_new_experience(initial_exp_obj)
 
     };
+    if (editable_experience.id !== editable_exp.id) {
+        set_new_experience(editable_experience);
+        set_editable_exp(editable_experience)
+    }
+
     return (
         <form>
             <div className='inputs'>

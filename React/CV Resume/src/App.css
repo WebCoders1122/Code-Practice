@@ -7,6 +7,15 @@
     width: 75vw;
 }
 
+.container2 {
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 1rem;
+    padding: 2rem 3rem;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 75vw;
+}
+
 .space-between {
     width: 100%;
     display: flex;
@@ -36,6 +45,8 @@ button:hover {
     transition: 0.4s;
 }
 
+
+
 @media print {
     .container {
         width: 100vw;
@@ -43,6 +54,10 @@ button:hover {
         padding: 0;
         border-radius: none;
         box-shadow: none;
+    }
+
+    .container2 {
+        display: none;
     }
 
     .section {
