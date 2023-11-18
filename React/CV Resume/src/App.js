@@ -32,6 +32,10 @@ const App = () => {
     const [experiences, set_experiences] = useState(Experience);
     const [editable_experience, set_editable_experience] = useState(initial_exp)
     const [editable_education, set_editable_education] = useState(initial_edu_editable);
+    const [skills, set_skills] = useState(Skills);
+    const [editable_skill, set_editable_skill] = useState({ index: '', value: '' });
+    const [hobbies, set_hobbies] = useState(Hobbies);
+    const [editable_hobby, set_editable_hobby] = useState({ index: '', value: '' });
 
 
 
@@ -85,6 +89,59 @@ const App = () => {
         set_editable_experience(initial_exp)
     };
 
+    // skills and hobbies
+    const add_skills_hobbies_handler = (new_value, value_name) => {
+        if (value_name == 'skills') {
+            let index = Object.values(skills).length + 1;
+            let new_skills = { ...skills };
+            new_skills[index] = new_value;
+            set_skills(new_skills)
+        } else {
+            let index = Object.values(hobbies).length + 1;
+            let new_hobbies = { ...hobbies };
+            new_hobbies[index] = new_value;
+            set_hobbies(new_hobbies)
+        }
+
+    };
+    const delete_skills_hobbies_handler = (value, data_name, index) => {
+        if (data_name == 'skills') {
+            let new_skills = Object.values(skills)
+            new_skills.splice(index, 1)
+            set_skills({ ...new_skills })
+        } else {
+            let new_hobbies = Object.values(hobbies)
+            new_hobbies.splice(index, 1)
+            set_hobbies({ ...new_hobbies })
+        }
+    };
+
+    const edit_skills_hobbies_handler = (value, value_name, index) => {
+        if (value_name === 'skills') {
+            let obj = { index: index, value: value }
+            set_editable_skill(obj)
+        } else {
+            let obj = { index: index, value: value }
+            set_editable_hobby(obj)
+        }
+        // console.log(value, value_name, index)
+    };
+    const update_skills_hobbies_handler = (value, value_name) => {
+        // console.log(value, value_name)
+        if (value_name == 'skills') {
+            let new_skills = Object.values(skills);
+            new_skills.splice(value.index, 1, value.value);
+            set_skills({ ...new_skills })
+            // console.log(value.index, value.value)
+            set_editable_skill({ index: '', value: '' })
+        } else {
+            let new_hobbies = Object.values(hobbies);
+            new_hobbies.splice(value.index, 1, value.value);
+            set_hobbies({ ...new_hobbies })
+            set_editable_hobby({ index: '', value: '' })
+        }
+    };
+
     return (
         <>
             <div className='container2'>
@@ -94,7 +151,11 @@ const App = () => {
                 <Heading class_Name='sub-heading' content='Experiences Records:' />
                 <Experience_Form add_experience={add_experience} editable_experience={editable_experience} update_experience={update_experience} />
                 <Heading class_Name='sub-heading' content='Hobbies and Skills:' />
-                <Hobbies_Skills_form />
+                <Hobbies_Skills_form
+                    add_skills_hobbies_handler={add_skills_hobbies_handler}
+                    editable_skill={editable_skill}
+                    editable_hobby={editable_hobby}
+                    update_skills_hobbies_handler={update_skills_hobbies_handler} />
             </div>
             <div className='container'>
                 <Heading class_Name='main-heading' content='Resume of XYZ' />
@@ -120,7 +181,12 @@ const App = () => {
                 {/* Skills Records */}
                 <div>
                     <Heading class_Name='sub-heading' content='Skills:' />
-                    <List data={Skills} />
+                    <List
+                        data={skills}
+                        data_name='skills'
+                        delete_skills_hobbies_handler={delete_skills_hobbies_handler}
+                        edit_skills_hobbies_handler={edit_skills_hobbies_handler}
+                    />
                 </div>
 
                 {/* Experience Records */}
@@ -132,7 +198,11 @@ const App = () => {
                 {/* Hobbies Records */}
                 <div>
                     <Heading class_Name='sub-heading' content='Hobbies:' />
-                    <List data={Hobbies} />
+                    <List
+                        data={hobbies}
+                        data_name='hobbies'
+                        delete_skills_hobbies_handler={delete_skills_hobbies_handler}
+                        edit_skills_hobbies_handler={edit_skills_hobbies_handler} />
                 </div>
 
                 <button className='button' onClick={() => window.print()}>Print CV</button>
