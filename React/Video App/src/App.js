@@ -3,7 +3,7 @@ import { Add_video } from './Components/Add_video';
 import PlayButton from './Components/PlayButton';
 import Video from './Components/Video';
 import Data from './Data/Data';
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 
 const editable_object = {
   id: '',
@@ -12,19 +12,32 @@ const editable_object = {
 }
 
 function App() {
-  const [videos, set_videos] = useState(Data);
+  const videoReducer = (videos, action) => {
+    switch (action.type) {
+      case 'ADD':
+        return [...videos, {
+          ...action.payload, id: videos.length + 1
+        }]
+
+      default:
+        return videos;
+    }
+  };
+  const [videos, dispatch] = useReducer(videoReducer, Data);
+  // const [videos, set_videos] = useState(Data);
   const [editable_video, set_editable_video] = useState(editable_object);
 
   const add_Video = (video) => {
-    set_videos([...videos, {
-      ...video, id: videos.length + 1
-    }])
+    dispatch({ type: 'ADD', payload: video })
+    // set_videos([...videos, {
+    //   ...video, id: videos.length + 1
+    // }])
 
-    console.log(videos)
+    // console.log(videos)
   };
 
   const delete_video = (id) => {
-    set_videos(videos.filter(video => video.id !== id))
+    // set_videos(videos.filter(video => video.id !== id))
   };
 
   const edit_video = (id) => {
@@ -35,7 +48,7 @@ function App() {
     let index = videos.findIndex(v => v.id == video.id)
     let newVideo = [...videos]
     newVideo.splice(index, 1, video)
-    set_videos(newVideo)
+    // set_videos(newVideo)
     set_editable_video(editable_object)
     console.log(videos)
 
