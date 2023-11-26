@@ -8,7 +8,7 @@ const editable_object = {
 }
 
 
-export const Add_video = ({ add_Video, editable_video, update_video }) => {
+export const Add_video = ({ dispatch, editable_video }) => {
     const initial_object = {
         title: '',
         views: '',
@@ -28,10 +28,9 @@ export const Add_video = ({ add_Video, editable_video, update_video }) => {
     const handle_click = (e) => {
         e.preventDefault();
         if (editable_video.id !== '') {
-            update_video(video)
-            console.log(video)
+            dispatch({ type: 'UPDATE', payload: video })
         } else {
-            add_Video(video)
+            dispatch({ type: 'ADD', payload: video })
         }
         set_video(initial_object)
     };

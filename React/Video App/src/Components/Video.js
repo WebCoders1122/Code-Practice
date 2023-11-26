@@ -1,10 +1,9 @@
 import './Video.css'
-import PlayButton from './PlayButton';
 
-const Video = ({ video_data, children, delete_video, edit_video }) => {
+const Video = ({ video_data, children, edit_video, dispatch }) => {
     return (
         <div className='container'>
-            <button className='close' onClick={() => delete_video(video_data.id)}>x</button>
+            <button className='close' onClick={() => dispatch({ type: 'DELETE', payload: video_data.id })}>x</button>
             <button className='edit' onClick={() => edit_video(video_data.id)}>Edit</button>
             <div className="pic">
                 <img src='https://picsum.photos/300/200' />

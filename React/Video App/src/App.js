@@ -12,62 +12,42 @@ const editable_object = {
 }
 
 function App() {
+  const [editable_video, set_editable_video] = useState(editable_object);
+
   const videoReducer = (videos, action) => {
     switch (action.type) {
       case 'ADD':
         return [...videos, {
           ...action.payload, id: videos.length + 1
-        }]
-
+        }];
+      case 'DELETE':
+        return videos.filter(video => video.id !== action.payload)
+      case 'UPDATE':
+        let index = videos.findIndex(v => v.id == action.payload.id)
+        let newVideo = [...videos]
+        newVideo.splice(index, 1, action.payload)
+        set_editable_video(editable_object)
+        return newVideo;
       default:
         return videos;
     }
   };
   const [videos, dispatch] = useReducer(videoReducer, Data);
-  // const [videos, set_videos] = useState(Data);
-  const [editable_video, set_editable_video] = useState(editable_object);
-
-  const add_Video = (video) => {
-    dispatch({ type: 'ADD', payload: video })
-    // set_videos([...videos, {
-    //   ...video, id: videos.length + 1
-    // }])
-
-    // console.log(videos)
-  };
-
-  const delete_video = (id) => {
-    // set_videos(videos.filter(video => video.id !== id))
-  };
-
   const edit_video = (id) => {
     set_editable_video(videos.find(video => video.id === id))
   };
-
-  const update_video = (video) => {
-    let index = videos.findIndex(v => v.id == video.id)
-    let newVideo = [...videos]
-    newVideo.splice(index, 1, video)
-    // set_videos(newVideo)
-    set_editable_video(editable_object)
-    console.log(videos)
-
-  };
-
-
   return (
     <div className="App" onClick={() => console.log('App')}>
       <Add_video
-        add_Video={add_Video}
+        dispatch={dispatch}
         editable_video={editable_video}
-        update_video={update_video}
       ></Add_video>
       {videos.map((video_data, index) => {
         return (
           <Video
             key={index}
             video_data={video_data}
-            delete_video={delete_video}
+            dispatch={dispatch}
             edit_video={edit_video}
           >
             <PlayButton
