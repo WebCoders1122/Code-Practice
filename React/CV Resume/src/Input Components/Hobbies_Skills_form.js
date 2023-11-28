@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Hobbies_Skills_form.css';
 
-const Hobbies_Skills_form = ({ add_skills_hobbies_handler, editable_skill, editable_hobby, update_skills_hobbies_handler }) => {
+const Hobbies_Skills_form = ({ dispatch_sh, editable_skill, editable_hobby }) => {
     const [new_skill, set_new_skill] = useState({ value: '' });
     const [new_hobby, set_new_hobby] = useState({ value: '' });
     const [editable_sk, set_editable_sk] = useState({ index: '', value: '' });
@@ -18,9 +18,10 @@ const Hobbies_Skills_form = ({ add_skills_hobbies_handler, editable_skill, edita
     const skills_handler = (e) => {
         e.preventDefault();
         if (editable_skill.index !== '') {
-            update_skills_hobbies_handler(new_skill, 'skills')
+            dispatch_sh({ type: 'update_skill', value: new_skill })
         } else {
-            add_skills_hobbies_handler(new_skill, 'skills')
+            dispatch_sh({ type: 'add_skill', new_skill: new_skill })
+            // add_skills_hobbies_handler(new_skill, 'skills')
         }
         set_new_skill({ value: '' })
     };
@@ -28,9 +29,10 @@ const Hobbies_Skills_form = ({ add_skills_hobbies_handler, editable_skill, edita
     const hobbies_handler = (e) => {
         e.preventDefault();
         if (editable_hobby.index !== '') {
-            update_skills_hobbies_handler(new_hobby, 'hobbies')
+            dispatch_sh({ type: 'update_hobby', value: new_hobby })
         } else {
-            add_skills_hobbies_handler(new_hobby, 'hobbies')
+            dispatch_sh({ type: 'add_hobby', new_hobby: new_hobby })
+            // add_skills_hobbies_handler(new_hobby, 'hobbies')
         }
         set_new_hobby({ value: '' })
     };

@@ -14,7 +14,7 @@ const initial_editable_exp = {
     post: ''
 };
 
-const Experience_Form = ({ add_experience, editable_experience, update_experience }) => {
+const Experience_Form = ({ dispatch_exp, editable_experience }) => {
 
     const [new_experience, set_new_experience] = useState(initial_exp_obj);
     const [editable_exp, set_editable_exp] = useState(initial_editable_exp);
@@ -26,9 +26,9 @@ const Experience_Form = ({ add_experience, editable_experience, update_experienc
     const submit_handle = (e) => {
         e.preventDefault()
         if (editable_exp.id !== '') {
-            update_experience(new_experience)
+            dispatch_exp({ type: 'update', exp: new_experience })
         } else {
-            add_experience(new_experience)
+            dispatch_exp({ type: 'add', exp: new_experience })
         }
         set_new_experience(initial_exp_obj)
 

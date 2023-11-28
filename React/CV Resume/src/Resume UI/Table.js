@@ -3,7 +3,7 @@ import Row from './Row';
 import Row_body from './Row_body';
 import './Table.css';
 
-const Table = ({ header, education, experiences, delete_handler, edit_handler }) => {
+const Table = ({ header, education, experiences, dispatch_education, dispatch_exp, edit_handler }) => {
     const [data, set_data] = useState([]);
     const [data_name, set_data_name] = useState('');
     useEffect(() => {
@@ -22,7 +22,7 @@ const Table = ({ header, education, experiences, delete_handler, edit_handler })
                 <Row header={header} />
             </thead>
             <tbody>
-                <Row_body data={data} data_name={data_name} delete_handler={delete_handler} edit_handler={edit_handler} />
+                <Row_body data={data} data_name={data_name} dispatch_exp={dispatch_exp} dispatch_education={dispatch_education} edit_handler={edit_handler} />
             </tbody>
         </table>
     )

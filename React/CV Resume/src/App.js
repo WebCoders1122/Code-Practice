@@ -8,7 +8,7 @@ import List from './Resume UI/List';
 import Skills from './Data/Skills';
 import Hobbies from './Data/Hobbies'
 import Academic_form from './Input Components/Academic_form';
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import Experience_Form from './Input Components/Experience_Form';
 import Hobbies_Skills_form from './Input Components/Hobbies_Skills_form';
 
@@ -28,44 +28,57 @@ const initial_exp = {
 };
 
 const App = () => {
-    const [education, set_education] = useState(Academic);
-    const [experiences, set_experiences] = useState(Experience);
     const [editable_experience, set_editable_experience] = useState(initial_exp)
     const [editable_education, set_editable_education] = useState(initial_edu_editable);
-    const [skills, set_skills] = useState(Skills);
     const [editable_skill, set_editable_skill] = useState({ index: '', value: '' });
-    const [hobbies, set_hobbies] = useState(Hobbies);
     const [editable_hobby, set_editable_hobby] = useState({ index: '', value: '' });
 
 
-
-
-    // Education
-    // add education
-    const add_education = (new_entry) => {
-        set_education([...education, { id: education.length + 1, ...new_entry }])
-        console.log('add')
-        console.log(education)
-    };
-    //update education 
-    const update_education = (new_entry) => {
-        let index = education.findIndex(object => new_entry.id == object.id)
-        let new_edu = [...education]
-        new_edu.splice(index, 1, new_entry)
-        set_education(new_edu)
-        set_editable_education(initial_edu_editable)
-        console.log('update')
-        console.log(education, new_entry)
-    };
-    // academic record functions
-    const delete_handler = (id, data_name) => {
-        console.log(id, data_name)
-        if (data_name == 'experiences') {
-            set_experiences(experiences.filter(edu_entry => edu_entry.id !== id))
-        } else {
-            set_education(education.filter(edu_entry => edu_entry.id !== id))
+    // Reducer to Handle education
+    const education_Reducer = (education, action) => {
+        switch (action.type) {
+            case 'add': {
+                return [...education, { id: education.length + 1, ...action.education }];
+            }
+            case 'update': {
+                let index = education.findIndex(object => action.education.id == object.id)
+                let new_edu = [...education]
+                new_edu.splice(index, 1, action.education)
+                set_editable_education(initial_edu_editable)
+                return new_edu;
+            }
+            case 'delete': {
+                return education.filter(edu_entry => edu_entry.id !== action.id)
+            }
+            default:
+                { return education }
         }
     };
+    const [education, dispatch_education] = useReducer(education_Reducer, Academic);
+
+    //Reducer to handle experience
+    const exp_reducer = (experiences, action) => {
+        switch (action.type) {
+            case 'add': {
+                return [...experiences, { id: experiences.length + 1, ...action.exp }]
+            }
+            case 'update': {
+                let index = experiences.findIndex(exp => exp.id == action.exp.id)
+                let exp_array = [...experiences];
+                exp_array.splice(index, 1, action.exp)
+                set_editable_experience(initial_exp)
+                return exp_array;
+            }
+            case 'delete': {
+                return experiences.filter(edu_entry => edu_entry.id !== action.id)
+            }
+            default:
+                return experiences;
+        }
+    };
+    const [experiences, dispatch_exp] = useReducer(exp_reducer, Experience);
+
+    // academic record functions
     const edit_handler = (id, data_name) => {
         if (data_name == 'experiences') {
             let editable_exp = experiences.find(exp_entry => exp_entry.id == id)
@@ -76,45 +89,54 @@ const App = () => {
         }
     };
 
-    // Experience
-    // add experiece
-    const add_experience = (new_experience) => {
-        set_experiences([...experiences, { id: experiences.length + 1, ...new_experience }])
+    // Reducer for Skills and hobbies (two states in one reducer)
+    const skills_hobbies = { //initial state of skills and hobbies
+        skills: Skills,
+        hobbies: Hobbies
     };
-    const update_experience = (updateable_exp) => {
-        let index = experiences.findIndex(exp => exp.id == updateable_exp.id)
-        let exp_array = [...experiences];
-        exp_array.splice(index, 1, updateable_exp)
-        set_experiences(exp_array);
-        set_editable_experience(initial_exp)
-    };
+    const sh_reducer = (skill_hobby, action) => {
+        switch (action.type) {
+            case 'add_skill': {
+                let index = Object.values(skill_hobby.skills).length + 1;
+                let new_skills = { ...skill_hobby.skills };
+                new_skills[index] = action.new_skill.value;
+                return { skills: new_skills, hobbies: skill_hobby.hobbies }
+            }
+            case 'update_skill': {
+                let new_skills = Object.values(skill_hobby.skills);
+                new_skills.splice(action.value.index, 1, action.value.value);
+                set_editable_skill({ index: '', value: '' })
+                return { skills: new_skills, hobbies: skill_hobby.hobbies }
+            }
+            case 'delete_skill': {
+                let new_skills = Object.values(skill_hobby.skills)
+                new_skills.splice(action.index, 1)
+                return { skills: new_skills, hobbies: skill_hobby.hobbies }
+            }
 
-    // skills and hobbies
-    const add_skills_hobbies_handler = (new_value, value_name) => {
-        if (value_name == 'skills') {
-            let index = Object.values(skills).length + 1;
-            let new_skills = { ...skills };
-            new_skills[index] = new_value;
-            set_skills(new_skills)
-        } else {
-            let index = Object.values(hobbies).length + 1;
-            let new_hobbies = { ...hobbies };
-            new_hobbies[index] = new_value;
-            set_hobbies(new_hobbies)
-        }
 
-    };
-    const delete_skills_hobbies_handler = (value, data_name, index) => {
-        if (data_name == 'skills') {
-            let new_skills = Object.values(skills)
-            new_skills.splice(index, 1)
-            set_skills({ ...new_skills })
-        } else {
-            let new_hobbies = Object.values(hobbies)
-            new_hobbies.splice(index, 1)
-            set_hobbies({ ...new_hobbies })
+            case 'add_hobby': {
+                let index = Object.values(skill_hobby.hobbies).length + 1;
+                let new_hobbies = { ...skill_hobby.hobbies };
+                new_hobbies[index] = action.new_hobby.value;
+                return { skills: skill_hobby.skills, hobbies: new_hobbies }
+            }
+            case 'update_hobby': {
+                let new_hobbies = Object.values(skill_hobby.hobbies);
+                new_hobbies.splice(action.value.index, 1, action.value.value);
+                set_editable_hobby({ index: '', value: '' })
+                return { skills: skill_hobby.skills, hobbies: new_hobbies }
+            }
+            case 'delete_hobby': {
+                let new_hobbies = Object.values(skill_hobby.hobbies)
+                new_hobbies.splice(action.index, 1)
+                return { skills: skill_hobby.skills, hobbies: new_hobbies }
+            }
+            default:
+                return skill_hobby;
         }
     };
+    const [skill_hobby, dispatch_sh] = useReducer(sh_reducer, skills_hobbies);
 
     const edit_skills_hobbies_handler = (value, value_name, index) => {
         if (value_name === 'skills') {
@@ -129,16 +151,16 @@ const App = () => {
     const update_skills_hobbies_handler = (value, value_name) => {
         // console.log(value, value_name)
         if (value_name == 'skills') {
-            let new_skills = Object.values(skills);
-            new_skills.splice(value.index, 1, value.value);
-            set_skills({ ...new_skills })
+            // let new_skills = Object.values(skills);
+            // new_skills.splice(value.index, 1, value.value);
+            // set_skills({ ...new_skills })
             // console.log(value.index, value.value)
-            set_editable_skill({ index: '', value: '' })
+            // set_editable_skill({ index: '', value: '' })
         } else {
-            let new_hobbies = Object.values(hobbies);
-            new_hobbies.splice(value.index, 1, value.value);
-            set_hobbies({ ...new_hobbies })
-            set_editable_hobby({ index: '', value: '' })
+            // let new_hobbies = Object.values(hobbies);
+            // new_hobbies.splice(value.index, 1, value.value);
+            // set_hobbies({ ...new_hobbies })
+            // set_editable_hobby({ index: '', value: '' })
         }
     };
 
@@ -147,15 +169,14 @@ const App = () => {
             <div className='container2'>
                 <Heading class_Name='main-heading' content='Resume Data Form' />
                 <Heading class_Name='sub-heading' content='Academic Records:' />
-                <Academic_form add_education={add_education} editable_education={editable_education} update_education={update_education} />
+                <Academic_form dispatch_education={dispatch_education} editable_education={editable_education} />
                 <Heading class_Name='sub-heading' content='Experiences Records:' />
-                <Experience_Form add_experience={add_experience} editable_experience={editable_experience} update_experience={update_experience} />
+                <Experience_Form dispatch_exp={dispatch_exp} editable_experience={editable_experience} />
                 <Heading class_Name='sub-heading' content='Hobbies and Skills:' />
                 <Hobbies_Skills_form
-                    add_skills_hobbies_handler={add_skills_hobbies_handler}
+                    dispatch_sh={dispatch_sh}
                     editable_skill={editable_skill}
-                    editable_hobby={editable_hobby}
-                    update_skills_hobbies_handler={update_skills_hobbies_handler} />
+                    editable_hobby={editable_hobby} />
             </div>
             <div className='container'>
                 <Heading class_Name='main-heading' content='Resume of XYZ' />
@@ -175,16 +196,16 @@ const App = () => {
                 {/* Academic Records */}
                 <div>
                     <Heading class_Name='sub-heading' content='Academic Records:' />
-                    <Table header={academic_header} education={education} delete_handler={delete_handler} edit_handler={edit_handler} />
+                    <Table header={academic_header} education={education} dispatch_education={dispatch_education} edit_handler={edit_handler} />
                 </div>
 
                 {/* Skills Records */}
                 <div>
                     <Heading class_Name='sub-heading' content='Skills:' />
                     <List
-                        data={skills}
+                        data={skill_hobby.skills}
                         data_name='skills'
-                        delete_skills_hobbies_handler={delete_skills_hobbies_handler}
+                        dispatch_sh={dispatch_sh}
                         edit_skills_hobbies_handler={edit_skills_hobbies_handler}
                     />
                 </div>
@@ -192,16 +213,16 @@ const App = () => {
                 {/* Experience Records */}
                 <div>
                     <Heading class_Name='sub-heading' content='Experience:' />
-                    <Table header={Experience_header} experiences={experiences} delete_handler={delete_handler} edit_handler={edit_handler} />
+                    <Table header={Experience_header} experiences={experiences} dispatch_exp={dispatch_exp} edit_handler={edit_handler} />
                 </div>
 
                 {/* Hobbies Records */}
                 <div>
                     <Heading class_Name='sub-heading' content='Hobbies:' />
                     <List
-                        data={hobbies}
+                        data={skill_hobby.hobbies}
                         data_name='hobbies'
-                        delete_skills_hobbies_handler={delete_skills_hobbies_handler}
+                        dispatch_sh={dispatch_sh}
                         edit_skills_hobbies_handler={edit_skills_hobbies_handler} />
                 </div>
 

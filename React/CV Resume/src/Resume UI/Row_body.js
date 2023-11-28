@@ -1,7 +1,5 @@
 import './Row_body.css';
-const Row_body = ({ data, delete_handler, edit_handler, data_name }) => {
-
-
+const Row_body = ({ data, dispatch_education, dispatch_exp, edit_handler, data_name }) => {
 
     return (
         <>
@@ -11,7 +9,13 @@ const Row_body = ({ data, delete_handler, edit_handler, data_name }) => {
                         return <td key={index}>{value}</td>
                     })}
                     <td className='buttons'>
-                        <span className='del' onClick={() => delete_handler(object.id, data_name)}>Delete</span>
+                        <span className='del' onClick={() => {
+                            if (data_name === 'experiences') {
+                                dispatch_exp({ type: 'delete', id: object.id })
+                            } else {
+                                dispatch_education({ type: 'delete', id: object.id })
+                            }
+                        }}>Delete</span>
                         <span className='edit' onClick={() => edit_handler(object.id, data_name)}>Edit</span>
                     </td>
                 </tr>

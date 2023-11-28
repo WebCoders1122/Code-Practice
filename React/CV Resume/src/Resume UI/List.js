@@ -1,8 +1,12 @@
 import './List.css';
 
-const List = ({ data, data_name, delete_skills_hobbies_handler, edit_skills_hobbies_handler }) => {
+const List = ({ data, data_name, dispatch_sh, edit_skills_hobbies_handler }) => {
     const delete_handler = (value, index) => {
-        delete_skills_hobbies_handler(value, data_name, index)
+        if (data_name == 'skills') {
+            dispatch_sh({ type: 'delete_skill', index: index })
+        } else {
+            dispatch_sh({ type: 'delete_hobby', index: index })
+        }
     };
     const edit_handler = (value, index) => {
         edit_skills_hobbies_handler(value, data_name, index)

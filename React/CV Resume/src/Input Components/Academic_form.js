@@ -18,7 +18,7 @@ const initial_ed = {
     marks: ''
 }
 
-const Academic_form = ({ add_education, editable_education, update_education }) => {
+const Academic_form = ({ dispatch_education, editable_education }) => {
     const [new_edu_entry, set_new_edu_entry] = useState(initial_edu_entry);
     const [editable, set_editable] = useState(initial_ed);
     const change_handle = (e) => {
@@ -31,11 +31,13 @@ const Academic_form = ({ add_education, editable_education, update_education }) 
     const submit_handle = (e) => {
         e.preventDefault();
         if (editable_education.id !== '') {
-            update_education(new_edu_entry)
-            console.log(new_edu_entry)
+            dispatch_education({ type: 'update', education: new_edu_entry })
+            // update_education(new_edu_entry)
+            // console.log(new_edu_entry)
         } else {
-            add_education(new_edu_entry)
-            console.log(new_edu_entry)
+            dispatch_education({ type: 'add', education: new_edu_entry })
+            // add_education(new_edu_entry)
+            // console.log(new_edu_entry)
 
         }
         set_new_edu_entry(initial_edu_entry)
