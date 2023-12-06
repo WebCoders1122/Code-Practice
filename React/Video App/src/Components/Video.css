@@ -17,14 +17,25 @@
 .title {
     font-weight: bold;
     margin-bottom: 1em;
-    color: white
 }
+
 
 .channel,
 .views {
     font-size: small;
-    color: #ccc;
     margin-bottom: 0.2em;
+}
+
+.title.darkMode,
+.channel.darkMode,
+.views.darkMode {
+    color: white
+}
+
+.title.lightMode,
+.channel.lightMode,
+.views.lightMode {
+    color: #393939
 }
 
 .views span {

@@ -1,8 +1,16 @@
 .App {
-  background-color: #333;
   width: 100%;
   min-height: 100vh;
   overflow: auto;
+}
+
+.App.darkMode {
+  background-color: #333;
+
+}
+
+.App.lightMode {
+  background-color: #bcbcbc;
 }
 
 button {

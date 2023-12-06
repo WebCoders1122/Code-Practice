@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Add_video.css';
+import ThemeContext from '../Context/Theme_Context';
 
 const editable_object = {
     id: '',
@@ -9,6 +10,7 @@ const editable_object = {
 
 
 export const Add_video = ({ dispatch, editable_video }) => {
+    const theme = useContext(ThemeContext);
     const initial_object = {
         title: '',
         views: '',
@@ -61,7 +63,7 @@ export const Add_video = ({ dispatch, editable_video }) => {
                 name='views'
                 value={video.views}
             />
-            <button className='submit' onClick={handle_click}> {editable_video.id ? 'Edit' : 'Add'} Video</button>
+            <button className={`submit ${theme}`} onClick={handle_click}> {editable_video.id ? 'Edit' : 'Add'} Video</button>
         </form>
     )
 }

@@ -2,8 +2,9 @@ import './App.css';
 import { Add_video } from './Components/Add_video';
 import PlayButton from './Components/PlayButton';
 import Video from './Components/Video';
+import ThemeContext from './Context/Theme_Context';
 import Data from './Data/Data';
-import { useReducer, useState } from 'react';
+import { useReducer, useState, useContext } from 'react';
 
 const editable_object = {
   id: '',
@@ -13,6 +14,7 @@ const editable_object = {
 
 function App() {
   const [editable_video, set_editable_video] = useState(editable_object);
+  const [mode, setMode] = useState('lightMode');
 
   const videoReducer = (videos, action) => {
     switch (action.type) {
@@ -37,27 +39,30 @@ function App() {
     set_editable_video(videos.find(video => video.id === id))
   };
   return (
-    <div className="App" onClick={() => console.log('App')}>
-      <Add_video
-        dispatch={dispatch}
-        editable_video={editable_video}
-      ></Add_video>
-      {videos.map((video_data, index) => {
-        return (
-          <Video
-            key={index}
-            video_data={video_data}
-            dispatch={dispatch}
-            edit_video={edit_video}
-          >
-            <PlayButton
-              onPlay={() => console.log('playing')}
-              onPause={() => console.log('Paused')}
-            >{video_data.title}</PlayButton>
-          </Video>
-        )
-      })}
-    </div>
+    <ThemeContext.Provider value={mode} >
+      <div className={`App ${mode}`} onClick={() => console.log('App')}>
+        <button className={mode} onClick={() => setMode(mode === 'lightMode' ? 'darkMode' : 'lightMode')}>Switch Mode</button>
+        <Add_video
+          dispatch={dispatch}
+          editable_video={editable_video}
+        ></Add_video>
+        {videos.map((video_data, index) => {
+          return (
+            <Video
+              key={index}
+              video_data={video_data}
+              dispatch={dispatch}
+              edit_video={edit_video}
+            >
+              <PlayButton
+                onPlay={() => console.log('playing')}
+                onPause={() => console.log('Paused')}
+              >{video_data.title}</PlayButton>
+            </Video>
+          )
+        })}
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
