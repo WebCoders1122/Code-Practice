@@ -8,9 +8,12 @@ import List from './Resume UI/List';
 import Skills from './Data/Skills';
 import Hobbies from './Data/Hobbies'
 import Academic_form from './Input Components/Academic_form';
-import { useReducer, useState } from 'react';
+import { useReducer, useState, Component } from 'react';
 import Experience_Form from './Input Components/Experience_Form';
 import Hobbies_Skills_form from './Input Components/Hobbies_Skills_form';
+import FontContext from './Context/FontContext';
+// import React, { Component } from "react";
+import Switch from "react-switch";
 
 const initial_edu_editable = {
     id: '',
@@ -27,13 +30,34 @@ const initial_exp = {
     post: ''
 };
 
+let fontData = { color: '', fontSize: '', fontStyle: '' }
+
 const App = () => {
     const [editable_experience, set_editable_experience] = useState(initial_exp)
     const [editable_education, set_editable_education] = useState(initial_edu_editable);
     const [editable_skill, set_editable_skill] = useState({ index: '', value: '' });
     const [editable_hobby, set_editable_hobby] = useState({ index: '', value: '' });
 
+    class SwitchExample extends Component {
+        constructor() {
+            super();
+            this.state = { checked: false };
+            this.handleChange = this.handleChange.bind(this);
+        }
 
+        handleChange(checked) {
+            this.setState({ checked });
+        }
+
+        render() {
+            return (
+                <label>
+                    <span>Switch with default style</span>
+                    <Switch onChange={this.handleChange} checked={this.state.checked} />
+                </label>
+            );
+        }
+    }
     // Reducer to Handle education
     const education_Reducer = (education, action) => {
         switch (action.type) {
@@ -137,6 +161,8 @@ const App = () => {
         }
     };
     const [skill_hobby, dispatch_sh] = useReducer(sh_reducer, skills_hobbies);
+    const [fontObj, setFontObj] = useState({ color: '', fontSize: '', fontStyle: '' });
+
 
     const edit_skills_hobbies_handler = (value, value_name, index) => {
         if (value_name === 'skills') {
@@ -148,86 +174,102 @@ const App = () => {
         }
         // console.log(value, value_name, index)
     };
-    const update_skills_hobbies_handler = (value, value_name) => {
-        // console.log(value, value_name)
-        if (value_name == 'skills') {
-            // let new_skills = Object.values(skills);
-            // new_skills.splice(value.index, 1, value.value);
-            // set_skills({ ...new_skills })
-            // console.log(value.index, value.value)
-            // set_editable_skill({ index: '', value: '' })
-        } else {
-            // let new_hobbies = Object.values(hobbies);
-            // new_hobbies.splice(value.index, 1, value.value);
-            // set_hobbies({ ...new_hobbies })
-            // set_editable_hobby({ index: '', value: '' })
-        }
+    const font_handler = (e) => {
+        e.preventDefault();
+        setFontObj(fontData)
+    };
+    const font_change_handler = (e) => {
+        fontData = { ...fontData, [e.target.name]: e.target.value }
+        console.log(fontData)
+    }
+    const handle_switch = (e) => {
+        console.log(e.target)
     };
 
     return (
         <>
-            <div className='container2'>
-                <Heading class_Name='main-heading' content='Resume Data Form' />
-                <Heading class_Name='sub-heading' content='Academic Records:' />
-                <Academic_form dispatch_education={dispatch_education} editable_education={editable_education} />
-                <Heading class_Name='sub-heading' content='Experiences Records:' />
-                <Experience_Form dispatch_exp={dispatch_exp} editable_experience={editable_experience} />
-                <Heading class_Name='sub-heading' content='Hobbies and Skills:' />
-                <Hobbies_Skills_form
-                    dispatch_sh={dispatch_sh}
-                    editable_skill={editable_skill}
-                    editable_hobby={editable_hobby} />
-            </div>
-            <div className='container'>
-                <Heading class_Name='main-heading' content='Resume of XYZ' />
-
-                {/* personal information */}
-                <div className='space-between section'>
-                    <div>
-                        <Information heading='Email' value='abc.xxxx@gmail.com' />
-                        <Information heading='Any Info' value='Details' />
-                    </div>
-                    <div>
-                        <Information heading='Address' value='House # xxxx, Near ABC road, City xxxx, Punjab, Pakisan' />
-                        <Information heading='Phone #' value='0315-xxxxxxxxx' />
-                    </div>
+            <FontContext.Provider value={fontObj}>
+                <SwitchExample onChange={handle_switch}></SwitchExample>
+                <div className='container2'>
+                    <Heading class_Name='main-heading' content='Change Font Properties' />
+                    <form>
+                        <div className='space-between section'>
+                            <label>Set Color</label>
+                            <input type='color' name='color' onChange={font_change_handler} />
+                            <label>Set Font Size</label>
+                            <input type='text' name='fontSize' onChange={font_change_handler} />
+                            <label>Set Font Style</label>
+                            <select name='fontStyle' onChange={font_change_handler}>
+                                <option>normal</option>
+                                <option>italic</option>
+                            </select>
+                        </div>
+                        <button onClick={font_handler}>Change Font Properties</button>
+                    </form>
                 </div>
-
-                {/* Academic Records */}
-                <div>
+                <div className='container2'>
+                    <Heading class_Name='main-heading' content='Resume Data Form' />
                     <Heading class_Name='sub-heading' content='Academic Records:' />
-                    <Table header={academic_header} education={education} dispatch_education={dispatch_education} edit_handler={edit_handler} />
-                </div>
-
-                {/* Skills Records */}
-                <div>
-                    <Heading class_Name='sub-heading' content='Skills:' />
-                    <List
-                        data={skill_hobby.skills}
-                        data_name='skills'
+                    <Academic_form dispatch_education={dispatch_education} editable_education={editable_education} />
+                    <Heading class_Name='sub-heading' content='Experiences Records:' />
+                    <Experience_Form dispatch_exp={dispatch_exp} editable_experience={editable_experience} />
+                    <Heading class_Name='sub-heading' content='Hobbies and Skills:' />
+                    <Hobbies_Skills_form
                         dispatch_sh={dispatch_sh}
-                        edit_skills_hobbies_handler={edit_skills_hobbies_handler}
-                    />
+                        editable_skill={editable_skill}
+                        editable_hobby={editable_hobby} />
                 </div>
+                <div className='container'>
+                    <Heading class_Name='main-heading' content='Resume of XYZ' />
 
-                {/* Experience Records */}
-                <div>
-                    <Heading class_Name='sub-heading' content='Experience:' />
-                    <Table header={Experience_header} experiences={experiences} dispatch_exp={dispatch_exp} edit_handler={edit_handler} />
+                    {/* personal information */}
+                    <div className='space-between section'>
+                        <div>
+                            <Information heading='Email' value='abc.xxxx@gmail.com' />
+                            <Information heading='Any Info' value='Details' />
+                        </div>
+                        <div>
+                            <Information heading='Address' value='House # xxxx, Near ABC road, City xxxx, Punjab, Pakisan' />
+                            <Information heading='Phone #' value='0315-xxxxxxxxx' />
+                        </div>
+                    </div>
+
+                    {/* Academic Records */}
+                    <div>
+                        <Heading class_Name='sub-heading' content='Academic Records:' />
+                        <Table header={academic_header} education={education} dispatch_education={dispatch_education} edit_handler={edit_handler} />
+                    </div>
+
+                    {/* Skills Records */}
+                    <div>
+                        <Heading class_Name='sub-heading' content='Skills:' />
+                        <List
+                            data={skill_hobby.skills}
+                            data_name='skills'
+                            dispatch_sh={dispatch_sh}
+                            edit_skills_hobbies_handler={edit_skills_hobbies_handler}
+                        />
+                    </div>
+
+                    {/* Experience Records */}
+                    <div>
+                        <Heading class_Name='sub-heading' content='Experience:' />
+                        <Table header={Experience_header} experiences={experiences} dispatch_exp={dispatch_exp} edit_handler={edit_handler} />
+                    </div>
+
+                    {/* Hobbies Records */}
+                    <div>
+                        <Heading class_Name='sub-heading' content='Hobbies:' />
+                        <List
+                            data={skill_hobby.hobbies}
+                            data_name='hobbies'
+                            dispatch_sh={dispatch_sh}
+                            edit_skills_hobbies_handler={edit_skills_hobbies_handler} />
+                    </div>
+
+                    <button className='button' onClick={() => window.print()}>Print CV</button>
                 </div>
-
-                {/* Hobbies Records */}
-                <div>
-                    <Heading class_Name='sub-heading' content='Hobbies:' />
-                    <List
-                        data={skill_hobby.hobbies}
-                        data_name='hobbies'
-                        dispatch_sh={dispatch_sh}
-                        edit_skills_hobbies_handler={edit_skills_hobbies_handler} />
-                </div>
-
-                <button className='button' onClick={() => window.print()}>Print CV</button>
-            </div>
+            </FontContext.Provider>
         </>
     )
 };
