@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Row from './Row';
 import Row_body from './Row_body';
 import './Table.css';
+import ThemeContext from '../Context/ThemeContext';
 
 const Table = ({ header, education, experiences, dispatch_education, dispatch_exp, edit_handler }) => {
     const [data, set_data] = useState([]);
     const [data_name, set_data_name] = useState('');
+    const themeColor = useContext(ThemeContext);
     useEffect(() => {
         if (experiences != null) {
             set_data(experiences)
@@ -18,10 +20,10 @@ const Table = ({ header, education, experiences, dispatch_education, dispatch_ex
     // console.log(header, data)
     return (
         <table>
-            <thead>
+            <thead className={themeColor}>
                 <Row header={header} />
             </thead>
-            <tbody>
+            <tbody className={themeColor}>
                 <Row_body data={data} data_name={data_name} dispatch_exp={dispatch_exp} dispatch_education={dispatch_education} edit_handler={edit_handler} />
             </tbody>
         </table>

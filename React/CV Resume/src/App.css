@@ -5,6 +5,8 @@
     padding: 2rem 3rem;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     width: 75vw;
+    transition: 0.5s;
+
 }
 
 .container2 {
@@ -14,6 +16,14 @@
     padding: 2rem 3rem;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     width: 75vw;
+    transition: 0.5s;
+
+}
+
+.container.darkMode,
+.container2.darkMode {
+    background-color: #221E22;
+    color: #fff;
 }
 
 .space-between {
@@ -37,6 +47,8 @@ button {
     border-radius: 0.5rem;
     font-size: 1.5rem;
     font-weight: 600;
+    transition: 0.5s;
+
 }
 
 button:hover {
@@ -45,6 +57,36 @@ button:hover {
     transition: 0.4s;
 }
 
+button.darkMode {
+    background-color: #38215a;
+    color: #fff;
+    border: 1px solid #ffffff;
+
+
+}
+
+button.darkMode:hover {
+    background-color: #000;
+    color: white;
+
+}
+
+select {
+    box-sizing: border-box;
+    padding: .3em 1em;
+    border-radius: 0.3em;
+    border: 1px solid #666;
+    font-size: 1.2rem;
+    transition: 0.5s;
+
+}
+
+select.darkMode {
+    color: #fff;
+    background-color: #31263E;
+    border: 1px solid #FFF;
+
+}
 
 
 @media print {

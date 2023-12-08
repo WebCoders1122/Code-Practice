@@ -12,6 +12,8 @@ input {
     border-radius: 0.3em;
     border: 1px solid #666;
     font-size: 1.2rem;
+    transition: 0.5s;
+
 }
 
 .inputs_hs .buttons {
@@ -25,10 +27,24 @@ input {
     font-size: 1.0rem;
     font-weight: 600;
     width: 10rem;
+    transition: 0.5s;
+
 }
 
 .inputs_hs .buttons:hover {
     background-color: #fff;
     color: #758BFD;
+    transition: 0.4s;
+}
+
+.inputs_hs .buttons.darkMode {
+    background-color: #38215a;
+    color: #fff;
+    border: 1px solid #ffffff;
+}
+
+.inputs_hs .buttons.darkMode:hover {
+    background-color: #000;
+    color: white;
     transition: 0.4s;
 }

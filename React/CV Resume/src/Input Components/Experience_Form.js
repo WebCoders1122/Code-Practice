@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Experience_Form.css';
+import { useContext } from 'react';
+import ThemeContext from '../Context/ThemeContext';
 
 const initial_exp_obj = {
     post: '',
@@ -15,6 +17,7 @@ const initial_editable_exp = {
 };
 
 const Experience_Form = ({ dispatch_exp, editable_experience }) => {
+    const themeColor = useContext(ThemeContext);
 
     const [new_experience, set_new_experience] = useState(initial_exp_obj);
     const [editable_exp, set_editable_exp] = useState(initial_editable_exp);
@@ -46,6 +49,7 @@ const Experience_Form = ({ dispatch_exp, editable_experience }) => {
                     name='post'
                     placeholder='post'
                     onChange={change_handle}
+                    className={themeColor}
                     value={new_experience.post}
                 />
                 <input
@@ -53,6 +57,7 @@ const Experience_Form = ({ dispatch_exp, editable_experience }) => {
                     name='duration'
                     placeholder='duration'
                     onChange={change_handle}
+                    className={themeColor}
                     value={new_experience.duration}
                 />
                 <input
@@ -60,10 +65,11 @@ const Experience_Form = ({ dispatch_exp, editable_experience }) => {
                     name='company'
                     placeholder='company'
                     onChange={change_handle}
+                    className={themeColor}
                     value={new_experience.company}
                 />
             </div>
-            <button onClick={submit_handle}>Add Experience</button>
+            <button className={themeColor} onClick={submit_handle}>Add Experience</button>
         </form>
     )
 }

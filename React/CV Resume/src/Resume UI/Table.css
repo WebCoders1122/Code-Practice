@@ -22,14 +22,33 @@ thead {
     color: #fff;
     font-weight: 600;
     font-size: 1.2rem;
+    transition: 0.5s;
+
+}
+
+thead.darkMode {
+    background-color: #44355B;
 }
 
 tbody tr:nth-child(even) {
     background-color: #F1F2F6;
+    transition: 0.5s;
+
 }
+
+tbody.darkMode tr:nth-child(even) {
+    background-color: #777;
+}
+
 
 tbody tr:nth-child(odd) {
     background-color: #fff;
+    transition: 0.5s;
+
+}
+
+tbody.darkMode tr:nth-child(odd) {
+    background-color: #555;
 }
 
 td,

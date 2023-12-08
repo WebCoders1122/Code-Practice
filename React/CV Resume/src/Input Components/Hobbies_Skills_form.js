@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Hobbies_Skills_form.css';
+import ThemeContext from '../Context/ThemeContext';
 
 const Hobbies_Skills_form = ({ dispatch_sh, editable_skill, editable_hobby }) => {
+    const themeColor = useContext(ThemeContext);
     const [new_skill, set_new_skill] = useState({ value: '' });
     const [new_hobby, set_new_hobby] = useState({ value: '' });
     const [editable_sk, set_editable_sk] = useState({ index: '', value: '' });
@@ -54,17 +56,19 @@ const Hobbies_Skills_form = ({ dispatch_sh, editable_skill, editable_hobby }) =>
                     name='hobbies'
                     placeholder='hobbies'
                     onChange={change_handler}
+                    className={themeColor}
                     value={new_hobby.value}
                 />
-                <button className='buttons' onClick={hobbies_handler}>Add Hobbies</button>
+                <button className={`buttons ${themeColor}`} onClick={hobbies_handler}>Add Hobbies</button>
                 <input
                     type='text'
                     name='skills'
                     placeholder='skills'
                     onChange={change_handler}
+                    className={themeColor}
                     value={new_skill.value}
                 />
-                <button className='buttons' onClick={skills_handler}>Add Skills</button>
+                <button className={`buttons ${themeColor}`} onClick={skills_handler}>Add Skills</button>
 
             </div>
         </form>

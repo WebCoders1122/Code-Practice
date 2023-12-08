@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Academic_form.css'
+import ThemeContext from '../Context/ThemeContext';
+import { useContext } from 'react';
+
+
 
 
 const initial_edu_entry = {
@@ -19,6 +23,8 @@ const initial_ed = {
 }
 
 const Academic_form = ({ dispatch_education, editable_education }) => {
+    const themeColor = useContext(ThemeContext);
+
     const [new_edu_entry, set_new_edu_entry] = useState(initial_edu_entry);
     const [editable, set_editable] = useState(initial_ed);
     const change_handle = (e) => {
@@ -40,6 +46,7 @@ const Academic_form = ({ dispatch_education, editable_education }) => {
             // console.log(new_edu_entry)
 
         }
+
         set_new_edu_entry(initial_edu_entry)
     };
 
@@ -58,6 +65,7 @@ const Academic_form = ({ dispatch_education, editable_education }) => {
                     name='degree'
                     placeholder='degree'
                     onChange={change_handle}
+                    className={themeColor}
                     value={new_edu_entry.degree}
 
                 />
@@ -66,6 +74,7 @@ const Academic_form = ({ dispatch_education, editable_education }) => {
                     name='specialization'
                     placeholder='specialization'
                     onChange={change_handle}
+                    className={themeColor}
                     value={new_edu_entry.specialization}
 
                 />
@@ -74,6 +83,7 @@ const Academic_form = ({ dispatch_education, editable_education }) => {
                     name='institute'
                     placeholder='institute'
                     onChange={change_handle}
+                    className={themeColor}
                     value={new_edu_entry.institute}
 
                 />
@@ -82,6 +92,7 @@ const Academic_form = ({ dispatch_education, editable_education }) => {
                     name='year'
                     placeholder='year'
                     onChange={change_handle}
+                    className={themeColor}
                     value={new_edu_entry.year}
 
                 />
@@ -90,10 +101,11 @@ const Academic_form = ({ dispatch_education, editable_education }) => {
                     name='marks'
                     placeholder='marks'
                     onChange={change_handle}
+                    className={themeColor}
                     value={new_edu_entry.marks}
                 />
             </div>
-            <button onClick={submit_handle}>Add Education</button>
+            <button className={themeColor} onClick={submit_handle}>Add Education</button>
         </form>
     )
 }

@@ -5,6 +5,8 @@
     border-bottom: 2px solid #758BFD;
     padding-bottom: 0.2em;
     margin-bottom: 0.8em;
+    transition: 0.5s;
+
 }
 
 .sub-heading {
@@ -12,6 +14,15 @@
     font-size: 1.7rem;
     border-bottom: 2px solid #FF8600;
     margin-bottom: 0.7em;
+    transition: 0.5s;
+
+}
+
+.main-heading.darkMode,
+.sub-heading.darkMode {
+    color: #d06f01;
+    border-bottom: 3px solid #FF8600;
+
 }
 
 @media print {

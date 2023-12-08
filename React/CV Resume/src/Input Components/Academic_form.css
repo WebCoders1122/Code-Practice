@@ -13,4 +13,19 @@ input {
     border-radius: 0.3em;
     border: 1px solid #666;
     font-size: 1.2rem;
+    transition: 0.5s;
+
+}
+
+input.darkMode {
+    color: #fff;
+    background-color: #31263E;
+    border: 1px solid #FFF;
+
+}
+
+input::placeholder {
+    color: #848484;
+    transition: 0.5s;
+
 }
