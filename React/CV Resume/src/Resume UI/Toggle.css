@@ -1,0 +1,58 @@
+.toggleContainer {
+    display: flex;
+    gap: 5px;
+    justify-content: end;
+    align-items: center;
+
+}
+
+.toggle {
+    visibility: hidden;
+}
+
+.toggle+label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--box-bg2);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.toggle+label::before {
+    content: "";
+    height: 1em;
+    width: 2em;
+    border-radius: 1em;
+    background-color: var(--box-bg2);
+    margin-right: 0.5em;
+    transition: background-color 250ms ease-in-out;
+}
+
+.toggle.darkMode+label.darkMode::before {
+    background-color: var(--btn-dark);
+}
+
+
+.toggle+label::after {
+    content: "";
+    height: 0.8em;
+    width: 0.8em;
+    border-radius: 1em;
+    background-color: var(--box-bg);
+    position: absolute;
+    left: 0.1em;
+    transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
+}
+
+.toggle.darkMode+label.darkMode::after {
+    background-color: var(--primary-dark);
+}
+
+.toggle:checked+label::after {
+    transform: translateX(100%);
+}
+
+label.darkMode {
+    color: #fff;
+}

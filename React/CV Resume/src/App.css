@@ -1,5 +1,5 @@
 .container {
-    background-color: #fff;
+    background-color: var(--box-bg);
     border-radius: 15px;
     margin: 1rem;
     padding: 2rem 3rem;
@@ -10,11 +10,11 @@
 }
 
 .container2 {
-    background-color: #fff;
+    background-color: var(--box-bg);
     border-radius: 15px;
     margin: 1rem;
     padding: 2rem 3rem;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 4px var(--shadow);
     width: 75vw;
     transition: 0.5s;
 
@@ -40,8 +40,8 @@
 button {
     display: block;
     margin: 0 auto;
-    border: 1px solid #758BFD;
-    background-color: #758BFD;
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
     color: #fff;
     padding: 0.5rem 10rem;
     border-radius: 0.5rem;
@@ -53,7 +53,7 @@ button {
 
 button:hover {
     background-color: #fff;
-    color: #758BFD;
+    color: var(--primary);
     transition: 0.4s;
 }
 

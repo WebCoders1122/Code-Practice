@@ -20,7 +20,7 @@
 
 .main-heading.darkMode,
 .sub-heading.darkMode {
-    color: #d06f01;
+    color: var(--primary-dark);
     border-bottom: 3px solid #FF8600;
 
 }

@@ -12,8 +12,8 @@ import { useReducer, useState } from 'react';
 import Experience_Form from './Input Components/Experience_Form';
 import Hobbies_Skills_form from './Input Components/Hobbies_Skills_form';
 import FontContext from './Context/FontContext';
-import { ToggleSwitch, themeMode } from './Switch';
 import ThemeContext from './Context/ThemeContext';
+import Toggle from './Resume UI/Toggle';
 
 const initial_edu_editable = {
     id: '',
@@ -158,7 +158,6 @@ const App = () => {
     const font_handler = (e) => {
         e.preventDefault();
         setFontObj(fontData)
-        console.log(themeMode)
     };
     const font_change_handler = (e) => {
         fontData = { ...fontData, [e.target.name]: e.target.value }
@@ -184,8 +183,7 @@ const App = () => {
             <FontContext.Provider value={fontObj}>
                 <ThemeContext.Provider value={themeColor}>
                     <div className={`container2 ${themeColor}`}>
-                        {/* <ToggleSwitch onChange={handle_switch}></ToggleSwitch> */}
-                        <button className={themeColor} onClick={darkHandler}>Enable {darkMode ? 'Dark' : 'Light'} Mode</button>
+                        <Toggle isChecked={darkMode} changeHandler={darkHandler} />
                         <Heading class_Name='main-heading' content='Change Font Properties' />
                         <form>
                             <div className='space-between section'>

@@ -6,6 +6,21 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary: #758BFD;
+    --secondary: #FF8600;
+    --box-bg: #fff;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --box-bg2: #666;
+    --primary-dark: #d06f01;
+    --secondary-dark: #d06f01;
+    --box-bg-dark: #221E22;
+    --shadow-dark: rgba(0, 0, 0, 0.1);
+    --box-bg2-dark: #666;
+    --btn-dark: #38215a;
+}
+
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #F1F2F6;
