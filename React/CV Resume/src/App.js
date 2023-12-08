@@ -8,12 +8,11 @@ import List from './Resume UI/List';
 import Skills from './Data/Skills';
 import Hobbies from './Data/Hobbies'
 import Academic_form from './Input Components/Academic_form';
-import { useReducer, useState, Component } from 'react';
+import { useReducer, useState } from 'react';
 import Experience_Form from './Input Components/Experience_Form';
 import Hobbies_Skills_form from './Input Components/Hobbies_Skills_form';
 import FontContext from './Context/FontContext';
-// import React, { Component } from "react";
-import Switch from "react-switch";
+import ToggleSwitch from './Switch';
 
 const initial_edu_editable = {
     id: '',
@@ -38,26 +37,7 @@ const App = () => {
     const [editable_skill, set_editable_skill] = useState({ index: '', value: '' });
     const [editable_hobby, set_editable_hobby] = useState({ index: '', value: '' });
 
-    class SwitchExample extends Component {
-        constructor() {
-            super();
-            this.state = { checked: false };
-            this.handleChange = this.handleChange.bind(this);
-        }
 
-        handleChange(checked) {
-            this.setState({ checked });
-        }
-
-        render() {
-            return (
-                <label>
-                    <span>Switch with default style</span>
-                    <Switch onChange={this.handleChange} checked={this.state.checked} />
-                </label>
-            );
-        }
-    }
     // Reducer to Handle education
     const education_Reducer = (education, action) => {
         switch (action.type) {
@@ -189,8 +169,8 @@ const App = () => {
     return (
         <>
             <FontContext.Provider value={fontObj}>
-                <SwitchExample onChange={handle_switch}></SwitchExample>
                 <div className='container2'>
+                    <ToggleSwitch onChange={handle_switch}></ToggleSwitch>
                     <Heading class_Name='main-heading' content='Change Font Properties' />
                     <form>
                         <div className='space-between section'>
