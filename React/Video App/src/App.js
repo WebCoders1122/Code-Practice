@@ -46,13 +46,14 @@ function App() {
   return (
     <ThemeContext.Provider value={mode}>
       <Dispatch_Context.Provider value={dispatch}>
-        <div className={`App ${mode}`} onClick={() => console.log("App")}>
+        <div
+          className={`App ${mode}`}
+          onClick={() => console.log("App")}>
           <button
             className={mode}
             onClick={() =>
               setMode(mode === "lightMode" ? "darkMode" : "lightMode")
-            }
-          >
+            }>
             Switch Mode
           </button>
           <Add_video editable_video={editable_video}></Add_video>
@@ -61,12 +62,10 @@ function App() {
               <Video
                 key={index}
                 video_data={video_data}
-                edit_video={edit_video}
-              >
+                edit_video={edit_video}>
                 <PlayButton
                   onPlay={() => console.log("playing")}
-                  onPause={() => console.log("Paused")}
-                >
+                  onPause={() => console.log("Paused")}>
                   {video_data.title}
                 </PlayButton>
               </Video>
