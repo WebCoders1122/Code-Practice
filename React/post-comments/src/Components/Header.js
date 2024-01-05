@@ -1,15 +1,12 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 
-const Header = () => {
+const Header = ({ data, index }) => {
   return (
-    <>
-      <tr>
-        <th>1</th>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Body</th>
-      </tr>
-    </>
+    <tr key={index + "h"}>
+      {Object.keys(data).map((key, i) => {
+        return <td key={i}>{key}</td>;
+      })}
+    </tr>
   );
 };
 

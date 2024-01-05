@@ -3,16 +3,22 @@ import Header from "./Header";
 import Content from "./Content";
 import "./Post.css";
 
-const PostTable = ({ purpose }) => {
+const PostTable = ({ data, index, comments }) => {
   return (
-    <table className='m1'>
+    <>
       <thead className=''>
-        <Header />
+        <Header
+          data={data}
+          index={index}
+        />
       </thead>
       <tbody>
-        <Content purpose={purpose} />
+        <Content
+          data={data}
+          index={index}
+        />
       </tbody>
-    </table>
+    </>
   );
 };
 
