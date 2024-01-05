@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Content = ({ data, index }) => {
-  console.log(data);
+const Content = ({ data, index, commentObject }) => {
+  const [hideID, setHideID] = useState(false);
+  const commentToggler = (index, e) => {
+    if (hideID) {
+      commentObject.setCommentDisplay("");
+      setHideID(false);
+    } else {
+      commentObject.setCommentDisplay(index);
+      setHideID(true);
+    }
+  };
+
+  // console.log(data);
   return (
     <tr
       className={Object.keys(data).length == 4 ? `bg-teal-300` : ""}
@@ -11,7 +22,9 @@ const Content = ({ data, index }) => {
           <td key={i}>
             {value}
             {Object.keys(data).length == 4 && i == 3 ? (
-              <button className='bg-sky-700 text-white p-1 px-3 rounded-sm mx-4'>
+              <button
+                onClick={(e) => commentToggler(index, e)}
+                className='bg-sky-700 text-white p-1 px-3 rounded-sm mx-4'>
                 Show Comments
               </button>
             ) : null}

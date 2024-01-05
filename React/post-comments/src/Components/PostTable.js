@@ -3,7 +3,7 @@ import Header from "./Header";
 import Content from "./Content";
 import "./Post.css";
 
-const PostTable = ({ data, index, comments }) => {
+const PostTable = ({ data, index, commentObject }) => {
   return (
     <>
       <thead className=''>
@@ -16,6 +16,7 @@ const PostTable = ({ data, index, comments }) => {
         <Content
           data={data}
           index={index}
+          commentObject={commentObject}
         />
       </tbody>
     </>

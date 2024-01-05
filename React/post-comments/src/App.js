@@ -9,6 +9,7 @@ const App = () => {
   console.log("app");
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
+  const [commentDisplay, setCommentDisplay] = useState("");
   const postURL = "https://jsonplaceholder.typicode.com/posts";
   const commentsURL = "https://jsonplaceholder.typicode.com/comments";
   useEffect(() => {
@@ -23,13 +24,21 @@ const App = () => {
       {posts.map((object, index) => {
         return (
           <>
-            <table className='m1'>
+            <table className='m-1 my-2 w-screen'>
               <PostTable
                 data={object}
                 index={index}
-                comments={comments}></PostTable>
+                commentObject={{
+                  commentDisplay,
+                  setCommentDisplay,
+                }}></PostTable>
             </table>
-            <table className='m1'>
+            <table
+              className='m-1 my-2 w-screen'
+              style={{
+                display: commentDisplay === index ? "" : "none",
+                transition: "0.5s",
+              }}>
               {comments.map((obj, i) => {
                 return (
                   <>
@@ -48,10 +57,6 @@ const App = () => {
           </>
         );
       })}
-
-      {/* <PostTable data={posts} />
-      <PostTable data={comments} /> */}
-      {/* </PostContext.Provider> */}
     </div>
   );
 };
