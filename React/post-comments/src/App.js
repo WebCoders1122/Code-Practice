@@ -17,25 +17,24 @@ const App = () => {
   }, []);
 
   const getComments = async (postID) => {
-    console.log("getComments", postID);
-    await axios.get(commentsURL + postID).then((res) => setComments(res.data));
+    // console.log("getComments", postID);
+    let index = posts.findIndex((post) => post.id == postID);
+    if (!posts[index].comments) {
+      const res = await axios.get(commentsURL + postID);
+      let newPosts = [...posts];
+      newPosts.splice(index, 1, { ...posts[index], comments: res.data });
+      setPosts([...newPosts]);
+    }
     setCommentShowId(postID);
+    console.log(posts);
   };
 
-  // useEffect(() => {
-  //   axios.get(postURL).then((response) => setPosts(response.data.slice(0, 10)));
-  //   axios
-  //     .get(commentsURL)
-  //     .then((response) => setComments(response.data.slice(0, 4)));
-  // }, []);
-  // console.log(posts);
   return (
     <commentContext.Provider value={getComments}>
       <div className='bg-gray-50 min-h-screen w-screen m-4'>
         <Table
           data={posts}
           dataName={"posts"}
-          comments={comments}
           commentShowId={commentShowId}
         />
         {/* {posts.map((postObj, postIndex) => {
