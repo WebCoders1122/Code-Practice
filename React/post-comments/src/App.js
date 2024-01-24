@@ -1,63 +1,69 @@
 import React, { useEffect, useState } from "react";
-import PostTable from "./Components/PostTable";
 import axios, { isCancel, AxiosError } from "axios";
-import { PostContext } from "./Context/postContext";
-import Header from "./Components/Header";
-import Content from "./Components/Content";
+import Table from "./Components/Table";
+import commentContext from "./Context/CommentContext";
+import commentStateContext from "./Context/CommentStateContext";
 
 const App = () => {
   console.log("app");
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
-  const [commentDisplay, setCommentDisplay] = useState("");
+  const [commentShowId, setCommentShowId] = useState(0);
   const postURL = "https://jsonplaceholder.typicode.com/posts";
-  const commentsURL = "https://jsonplaceholder.typicode.com/comments";
+  const commentsURL = "https://jsonplaceholder.typicode.com/comments?postId=";
+
   useEffect(() => {
-    axios.get(postURL).then((response) => setPosts(response.data.slice(0, 10)));
-    axios
-      .get(commentsURL)
-      .then((response) => setComments(response.data.slice(0, 4)));
+    axios.get(postURL).then((res) => setPosts(res.data.slice(0, 10)));
   }, []);
+
+  const getComments = async (postID) => {
+    console.log("getComments", postID);
+    await axios.get(commentsURL + postID).then((res) => setComments(res.data));
+    setCommentShowId(postID);
+  };
+
+  // useEffect(() => {
+  //   axios.get(postURL).then((response) => setPosts(response.data.slice(0, 10)));
+  //   axios
+  //     .get(commentsURL)
+  //     .then((response) => setComments(response.data.slice(0, 4)));
+  // }, []);
+  // console.log(posts);
   return (
-    <div className='bg-gray-50 min-h-screen w-screen m-4'>
-      {/* <PostContext.Provider value={{ posts, comments }}> */}
-      {posts.map((object, index) => {
-        return (
-          <>
-            <table className='m-1 my-2 w-screen'>
-              <PostTable
-                data={object}
-                index={index}
-                commentObject={{
-                  commentDisplay,
-                  setCommentDisplay,
-                }}></PostTable>
-            </table>
-            <table
-              className='m-1 my-2 w-screen'
-              style={{
-                display: commentDisplay === index ? "" : "none",
-                transition: "0.5s",
-              }}>
-              {comments.map((obj, i) => {
-                return (
-                  <>
-                    <Header
-                      data={obj}
-                      index={i}
-                    />
-                    <Content
-                      data={obj}
-                      index={i}
-                    />
-                  </>
-                );
-              })}
-            </table>
-          </>
-        );
-      })}
-    </div>
+    <commentContext.Provider value={getComments}>
+      <div className='bg-gray-50 min-h-screen w-screen m-4'>
+        <Table
+          data={posts}
+          dataName={"posts"}
+          comments={comments}
+          commentShowId={commentShowId}
+        />
+        {/* {posts.map((postObj, postIndex) => {
+          return (
+            <>
+              <Table
+                dataObj={postObj}
+                dataIndex={postIndex}
+              />
+              {comments != "[]" && postObj.id === commentShowId ? (
+                <div>
+                  {comments.map((commentObj, commentIndex) => {
+                    return (
+                      <>
+                        <Table
+                          dataObj={commentObj}
+                          dataIndex={commentIndex}
+                        />
+                      </>
+                    );
+                  })}
+                </div>
+              ) : null}
+            </>
+          );
+        })} */}
+      </div>
+    </commentContext.Provider>
   );
 };
 

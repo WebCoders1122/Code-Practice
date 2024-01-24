@@ -1,18 +1,19 @@
-import SearchButton from "./SearchButton.js";
-import SearchInput from "./SearchInput.js";
-import { useRef } from "react";
-import useWindowsSize from "./useWindowsSize.js";
+import React from "react";
+import List_item from "./Components/List_item";
 
-export default function Page() {
-  const [Width, Height] = useWindowsSize();
-  let aaa = useRef(null);
-  const handleClick = () => {
-    console.log(Width, Height);
-  };
+const items = ["apple", "banana", "grapes", "orange", "guava"];
+
+const App = () => {
+  console.log("app");
   return (
-    <div ref={aaa}>
-      <p>this is paragraph</p>
-      <button onClick={handleClick}>Get Width and Height</button>
+    <div>
+      <ul>
+        {items.map((item) => (
+          <List_item item={item} />
+        ))}
+      </ul>
     </div>
   );
-}
+};
+
+export default App;

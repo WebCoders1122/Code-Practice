@@ -1,0 +1,8 @@
+table, tbody, thead, tr, td, th {
+border: 1px solid #666;
+border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.2rem 2rem;
+}
