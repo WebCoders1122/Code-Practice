@@ -1,5 +1,6 @@
 import React from "react";
 import { navLinks } from "../Data/links";
+import ButtonLink from "./Small Components/ButtonLink";
 
 const Header = () => {
   return (
@@ -39,9 +40,10 @@ const Header = () => {
           Contact
         </a> */}
       </div>
-      <div className='button bg-orange-500 text-white font-bold px-4 py-1 rounded-full shadow'>
-        <button className='hire'>Hire Me</button>
-      </div>
+      <ButtonLink
+        title='Hire Me'
+        url='/hire-me'
+      />
     </div>
   );
 };
