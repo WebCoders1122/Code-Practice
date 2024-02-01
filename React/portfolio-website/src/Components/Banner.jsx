@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import bannerImg from "../assets/sd.jpg";
 import ButtonLink from "./Small Components/ButtonLink";
 import backgroundImage from "../assets/banner_wallpaper.svg";
 import Heading2 from "./Small Components/Heading2";
+import Typed from "typed.js";
 
 const Banner = () => {
+  const el = useRef(null);
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: [
+        "Frontend Developer",
+        "Mobile App Developer",
+        "Backend Developer",
+        "Java Developer",
+      ], // Strings to display
+      // Speed settings, try diffrent values untill you get good results
+      startDelay: 300,
+      typeSpeed: 50,
+      backSpeed: 15,
+      backDelay: 400,
+      loop: true,
+    });
+
+    // Destropying
+    return () => {
+      typed.destroy();
+    };
+  }, []);
+
   return (
     <div
       style={{
@@ -17,7 +41,12 @@ const Banner = () => {
         <div className='banner_text space-y-3 w-2/3 p-4 m-3 text-white'>
           <h3 className='text-2xl'>Hi, I am</h3>
           <h1 className='text-3xl font-bold'>Habib-ur-Rehman Shakir</h1>
-          <Heading2 text='I am Frontend Developer' />
+          <Heading2 text='And I am'>
+            <span
+              ref={el}
+              className='underline'></span>
+          </Heading2>
+
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure minus
             neque praesentium voluptatum eligendi quos sunt vero possimus harum

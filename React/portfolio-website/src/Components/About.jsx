@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import aboutImg from "../assets/about.jpg";
 import ButtonLink from "./Small Components/ButtonLink";
 import Heading from "./Small Components/Heading";
@@ -17,7 +17,7 @@ const About = () => {
           />
         </div>
         <div className='text w-1/2 space-y-3 mx-4 px-10'>
-          <Heading2 text='Frontend and Mobile Application Developer' />
+          <Heading2 text='And I am Frontend Developer' />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
             modi! Iusto omnis debitis nihil reiciendis!
