@@ -8,7 +8,7 @@ import experties from "../Data/experties";
 
 const Experties = () => {
   return (
-    <div className='experties_container pt-2'>
+    <div className='experties_container pt-2 '>
       <Heading text='My Experties' />
       <div
         className='experties-data flex justify-center items-center mt-3'

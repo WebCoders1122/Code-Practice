@@ -5,7 +5,7 @@ import ButtonLink from "./Small Components/ButtonLink";
 
 const Services = () => {
   return (
-    <div className='services_container p-4'>
+    <div className='services_container p-4 bg-slate-50'>
       <Heading text='My Services' />
       {/* services boxes */}
       <div className='flex justify-center px-5'>
