@@ -6,9 +6,11 @@ const Header = () => {
   return (
     <div className='navigation h-16 flex justify-between items-center px-10 bg-gray-100'>
       <div className='logo'>
-        <h1 className=' text-xl text-orange-500 font-bold drop-shadow-md'>
+        <a
+          className=' text-xl text-orange-500 font-bold drop-shadow-md'
+          href='http://localhost:5173/'>
           Habib-ur-Rehman Shakir
-        </h1>
+        </a>
       </div>
       <div className='links space-x-4 font-medium'>
         {navLinks.map((link) => (

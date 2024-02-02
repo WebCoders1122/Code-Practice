@@ -36,8 +36,11 @@ const Experties = () => {
         {/* right box */}
         <div className=' w-1/2 flex justify-center items-center'>
           <div className='w-2/3 space-x-3 space-y-2'>
-            {experties.map((exp) => (
-              <Experties_btn title={exp} />
+            {experties.map((exp, index) => (
+              <Experties_btn
+                title={exp}
+                key={index}
+              />
             ))}
           </div>
         </div>

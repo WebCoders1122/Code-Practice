@@ -4,6 +4,8 @@ import ButtonLink from "./Small Components/ButtonLink";
 import backgroundImage from "../assets/banner_wallpaper.svg";
 import Heading2 from "./Small Components/Heading2";
 import Typed from "typed.js";
+import social from "../Data/SocialData";
+import Socialicons from "./Small Components/Socialicons";
 
 const Banner = () => {
   const el = useRef(null);
@@ -54,26 +56,13 @@ const Banner = () => {
             aspernatur quia labore.
           </p>
           <div className=' flex justify-start items-center space-x-2 text-2xl'>
-            <a
-              href='/facebook'
-              className=' bg-gray-800 w-11 h-11 rounded-full border flex justify-center items-center'>
-              <i class='fa-brands fa-facebook'></i>
-            </a>
-            <a
-              href='/facebook'
-              className=' bg-gray-800 w-11 h-11 rounded-full border flex justify-center items-center'>
-              <i class='fa-brands fa-square-x-twitter'></i>
-            </a>
-            <a
-              href='/facebook'
-              className=' bg-gray-800 w-11 h-11 rounded-full border flex justify-center items-center'>
-              <i class='fa-brands fa-linkedin'></i>
-            </a>
-            <a
-              href='/facebook'
-              className=' bg-gray-800 w-11 h-11 rounded-full border flex justify-center items-center'>
-              <i class='fa-brands fa-youtube'></i>
-            </a>
+            {/* social icons */}
+            {social.map((icon, index) => (
+              <Socialicons
+                socialObj={icon}
+                key={index}
+              />
+            ))}
           </div>
           <ButtonLink
             title='Contact Me'
